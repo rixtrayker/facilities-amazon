@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Branch {
+  id       Int      @id @default(autoincrement())
+  code     String   @unique
+  name     String
+  zone     String
+  type     String
+  openedAt DateTime?
+  sqm      Int?
+  manager  String?
+  tickets  Ticket[]
+}
+
+model Vendor {
+  id           Int      @id @default(autoincrement())
+  name         String
+  specialty    String
+  contact      String?
+  contractType String?
+  tickets      Ticket[]
+}
+
+model Agent {
+  id      Int      @id @default(autoincrement())
+  name    String
+  role    String
+  zone    String?
+  tickets Ticket[]
+}
+
+model Ticket {
+  id              Int       @id @default(autoincrement())
+  code            String    @unique
+  title           String
+  description     String?
+  category        String
+  ticketType      String?
+  priority        String
+  maintenanceType String?
+  status          String
+  sparePartsCost  Float     @default(0)
+  visitCost       Float     @default(0)
+  createdDate     DateTime  @default(now())
+  closedDate      DateTime?
+  reporter        String?
+
+  // Relations
+  branchId Int
+  branch   Branch  @relation(fields: [branchId], references: [id])
+  
+  vendorId Int?
+  vendor   Vendor? @relation(fields: [vendorId], references: [id])
+  
+  agentId  Int?
+  agent    Agent?  @relation(fields: [agentId], references: [id])
+}
