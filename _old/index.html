@@ -1,0 +1,2458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FacilityOps — Amazon Now Egypt</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.1/dist/tabler-icons.min.css" />
+
+  <style>
+/* ── tokens ───────────────────────────────────────────── */
+:root {
+  --bg:           #F6F5F1;      /* warm paper */
+  --bg-sub:       #EFEDE6;
+  --surface:      #FFFFFF;
+  --surface-2:    #FBFAF7;
+  --line:         #E6E3DA;
+  --line-strong:  #D7D3C7;
+
+  --ink:          #14130F;
+  --ink-2:        #2C2A24;
+  --muted:        #6F6B5F;
+  --muted-2:      #A19D90;
+
+  --accent:       #FF9900;      /* amazon orange */
+  --accent-ink:   #1A1A1A;
+  --accent-soft:  #FFF1DB;
+  --accent-line:  #F6C36B;
+
+  --critical:     #C92A2A;
+  --critical-soft:#FCE7E7;
+  --warning:      #B45309;
+  --warning-soft: #FEF3D5;
+  --info:         #1D4ED8;
+  --info-soft:    #E5EBFB;
+  --ok:           #1F7A4D;
+  --ok-soft:      #DEF1E3;
+  --violet:       #6F37B0;
+  --violet-soft:  #EFE3FA;
+
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 0 rgba(20,19,15,0.04);
+  --shadow:    0 1px 2px rgba(20,19,15,0.04), 0 1px 0 rgba(20,19,15,0.04);
+}
+
+/* ── reset ────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-feature-settings: 'zero'; }
+.serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+/* ── app shell ────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.rail {
+  background: #14130F;
+  color: #B6B0A0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 4px;
+}
+.rail-logo {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  color: #14130F;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+.rail-item {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 18px;
+  color: #6F6B5F;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.rail-item:hover { color: #FAFAF7; background: #1F1E18; }
+.rail-item.active { background: #2A2820; color: var(--accent); }
+.rail-item .pip {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.rail-spacer { flex: 1; }
+.rail-divider { width: 24px; height: 1px; background: #2A2820; margin: 8px 0; }
+
+/* ── workspace ────────────────────────────────────────── */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.topbar {
+  height: 52px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  padding: 0 22px 0 18px;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.crumbs {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.crumbs strong { color: var(--ink); font-weight: 600; }
+.crumbs .sep { color: var(--muted-2); }
+.crumbs .back {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.crumbs .back:hover { background: var(--bg-sub); }
+
+.search {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 240px;
+  color: var(--muted);
+}
+.search input {
+  border: none; outline: none; background: transparent;
+  flex: 1; font-size: 13px;
+  color: var(--ink);
+}
+.search .kbd {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted-2);
+  background: var(--bg-sub);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.12s;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.btn:hover { background: var(--bg-sub); border-color: var(--line-strong); }
+.btn-primary {
+  background: var(--ink);
+  color: #FAFAF7;
+  border-color: var(--ink);
+}
+.btn-primary:hover { background: #2C2A24; border-color: #2C2A24; }
+.btn-accent {
+  background: var(--accent);
+  color: #1A1A1A;
+  border-color: var(--accent);
+}
+.btn-accent:hover { background: #FFAB2E; border-color: #FFAB2E; }
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+}
+.btn-ghost:hover { background: var(--bg-sub); }
+.btn-sm { padding: 4px 9px; font-size: 12px; }
+.btn-icon { padding: 6px 7px; }
+
+/* ── canvas ───────────────────────────────────────────── */
+.canvas {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+.canvas-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 24px 28px 64px;
+}
+
+/* ── pulse strip ──────────────────────────────────────── */
+.pulse {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  overflow-x: auto;
+}
+.pulse-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pulse-label .live-dot {
+  width: 6px; height: 6px;
+  background: var(--ok);
+  border-radius: 50%;
+  position: relative;
+}
+.pulse-label .live-dot::after {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  background: var(--ok);
+  opacity: 0.35;
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.6); opacity: 0.5; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.pulse-stations {
+  display: flex; gap: 6px;
+  flex: 1;
+  flex-wrap: nowrap;
+}
+.pulse-station {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  min-width: 84px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.pulse-station:hover { border-color: var(--line-strong); background: var(--bg-sub); }
+.pulse-station .ps-bar { height: 3px; border-radius: 2px; background: var(--ok); }
+.pulse-station.ok    .ps-bar { background: var(--ok); }
+.pulse-station.warn  .ps-bar { background: var(--warning); }
+.pulse-station.crit  .ps-bar { background: var(--critical); }
+.pulse-station .ps-name { font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pulse-station .ps-stat { font-size: 10px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+.pulse-station.crit .ps-stat { color: var(--critical); font-weight: 600; }
+.pulse-station.warn .ps-stat { color: var(--warning); font-weight: 600; }
+
+/* ── layouts ──────────────────────────────────────────── */
+.cols-2 { display: grid; grid-template-columns: 1fr 340px; gap: 22px; }
+.cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.cols-detail { display: grid; grid-template-columns: 1fr 340px; gap: 22px; }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+.stack-sm { display: flex; flex-direction: column; gap: 10px; }
+
+/* ── cards ────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card-head {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.card-title .count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  background: var(--bg-sub);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.card-title .count.urgent {
+  background: var(--critical-soft);
+  color: var(--critical);
+}
+.card-pad { padding: 16px 18px; }
+.card-pad-lg { padding: 22px 24px; }
+
+/* ── decision lanes (the heart of the dashboard) ──────── */
+.lanes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.lane {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.lane-head {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.lane-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 6px;
+}
+.lane-tag .dot { width: 6px; height: 6px; border-radius: 50%; }
+.lane-tag.triage  { color: var(--critical); }
+.lane-tag.triage .dot { background: var(--critical); }
+.lane-tag.approve { color: var(--warning); }
+.lane-tag.approve .dot { background: var(--warning); }
+.lane-tag.stuck   { color: var(--violet); }
+.lane-tag.stuck .dot { background: var(--violet); }
+.lane-title {
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.lane-title .num { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
+.lane-title .num.zero { color: var(--muted-2); }
+.lane-title .lbl { font-size: 13px; color: var(--muted); }
+.lane-body { padding: 6px 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+
+.lane-item {
+  padding: 9px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px;
+  transition: background 0.12s;
+}
+.lane-item:hover { background: var(--bg-sub); }
+.lane-item .li-code { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; flex-shrink: 0; width: 78px; }
+.lane-item .li-body { flex: 1; min-width: 0; }
+.lane-item .li-title { font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lane-item .li-meta  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.lane-empty {
+  padding: 18px 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-2);
+  font-style: italic;
+}
+
+/* ── kpi tiles ────────────────────────────────────────── */
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  position: relative;
+}
+.kpi-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.kpi-value {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+  color: var(--ink);
+}
+.kpi-value .unit { font-size: 14px; color: var(--muted); font-weight: 500; margin-left: 4px; }
+.kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+.kpi-sub .delta-up { color: var(--critical); }
+.kpi-sub .delta-down { color: var(--ok); }
+
+/* ── badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.badge .dot { width: 5px; height: 5px; border-radius: 50%; }
+.badge-status-new       { background: #EFEDE6; color: #4B4943; }
+.badge-status-new .dot  { background: #8B8576; }
+.badge-status-progress  { background: var(--info-soft); color: var(--info); }
+.badge-status-progress .dot { background: var(--info); }
+.badge-status-pending   { background: var(--warning-soft); color: var(--warning); }
+.badge-status-pending .dot { background: var(--warning); }
+.badge-status-waiting   { background: var(--violet-soft); color: var(--violet); }
+.badge-status-waiting .dot { background: var(--violet); }
+.badge-status-maint     { background: #E0EFF7; color: #0E6BA8; }
+.badge-status-maint .dot { background: #0E6BA8; }
+.badge-status-closed    { background: var(--ok-soft); color: var(--ok); }
+.badge-status-closed .dot { background: var(--ok); }
+.badge-status-rejected  { background: var(--critical-soft); color: var(--critical); }
+.badge-status-rejected .dot { background: var(--critical); }
+.badge-status-duplicate { background: #EFEDE6; color: #71717A; }
+.badge-status-duplicate .dot { background: #A19D90; }
+
+.badge-prio-low      { background: var(--ok-soft); color: var(--ok); }
+.badge-prio-medium   { background: var(--warning-soft); color: var(--warning); }
+.badge-prio-high     { background: var(--critical-soft); color: var(--critical); }
+.badge-prio-quotation{ background: var(--violet-soft); color: var(--violet); }
+
+/* ── table ────────────────────────────────────────────── */
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th {
+  padding: 9px 16px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+.tbl td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  vertical-align: middle;
+}
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr.clickable { cursor: pointer; transition: background 0.12s; }
+.tbl tr.clickable:hover td { background: var(--surface-2); }
+.tbl .code { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-2); font-weight: 500; }
+.tbl .title-cell { font-weight: 500; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tbl .muted { color: var(--muted); }
+.tbl .num { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+
+/* ── inputs ───────────────────────────────────────────── */
+.input, .select, .textarea {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  width: 100%;
+  font-family: inherit;
+}
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(20,19,15,0.05);
+}
+.textarea { resize: vertical; min-height: 90px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 12px; font-weight: 500; color: var(--ink-2); }
+.field-label .req { color: var(--critical); }
+.field-hint { font-size: 11px; color: var(--muted); }
+
+/* ── filters bar ──────────────────────────────────────── */
+.filters {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 14px;
+  align-items: center;
+}
+.filters .select { width: auto; min-width: 130px; }
+.filters .input  { width: auto; min-width: 220px; }
+.filters-count { margin-left: auto; font-size: 12px; color: var(--muted); }
+
+/* ── tabs ─────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  padding: 9px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); }
+.tab.active .num { color: var(--ink-2); }
+
+/* ── ticket detail ────────────────────────────────────── */
+.ticket-head {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.ticket-head .row1 {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.ticket-head .row1 .code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--bg-sub);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.ticket-head h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.ticket-head .desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 680px;
+}
+
+.timeline {
+  padding: 4px 18px 8px;
+}
+.timeline-item {
+  display: flex; gap: 12px;
+  padding: 10px 0;
+  position: relative;
+}
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 26px; bottom: -4px;
+  width: 1px;
+  background: var(--line);
+}
+.timeline-dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 2px;
+}
+.timeline-dot.active { border-color: var(--ink); background: var(--ink); }
+.timeline-dot.active::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline-body { flex: 1; padding-top: 1px; }
+.timeline-event { font-size: 13px; color: var(--ink); font-weight: 500; }
+.timeline-detail { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.timeline-when { font-size: 11px; color: var(--muted-2); margin-top: 2px; font-family: 'IBM Plex Mono', monospace; }
+
+/* ── meta rows ────────────────────────────────────────── */
+.meta-list { padding: 4px 0 6px; }
+.meta-row {
+  padding: 8px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px;
+  gap: 10px;
+}
+.meta-row .label { color: var(--muted); font-size: 12px; }
+.meta-row .val   { color: var(--ink); font-weight: 500; text-align: right; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meta-row .val.code { font-family: 'IBM Plex Mono', monospace; }
+
+/* ── cost block ───────────────────────────────────────── */
+.cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+}
+.cost-grid > div {
+  background: var(--surface);
+  padding: 18px 22px;
+}
+.cost-grid > .total {
+  background: var(--accent-soft);
+}
+.cost-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+.cost-val { font-size: 22px; font-weight: 600; margin-top: 4px; font-family: 'IBM Plex Mono', monospace; letter-spacing: -0.01em; }
+.cost-grid > .total .cost-val { color: var(--accent-ink); }
+.cost-grid > .total .cost-label { color: var(--warning); font-weight: 600; }
+
+/* ── branches grid ────────────────────────────────────── */
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.branch-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.12s;
+  position: relative;
+  overflow: hidden;
+}
+.branch-card:hover { border-color: var(--line-strong); transform: translateY(-1px); box-shadow: var(--shadow); }
+.branch-card .b-zone {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.branch-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  margin: 4px 0 14px;
+}
+.branch-card .b-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.b-stat-l { font-size: 11px; color: var(--muted); }
+.b-stat-v { font-size: 16px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; }
+.b-stat-v.crit { color: var(--critical); }
+.b-stat-v.warn { color: var(--warning); }
+.b-stat-v.ok   { color: var(--ok); }
+.b-stat-v.zero { color: var(--muted-2); }
+.branch-card .health-strip {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.branch-card .health-strip.ok   { background: var(--ok); }
+.branch-card .health-strip.warn { background: var(--warning); }
+.branch-card .health-strip.crit { background: var(--critical); }
+
+/* ── vendor scorecard ─────────────────────────────────── */
+.vendor-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 100px 100px 100px 80px;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.vendor-row:last-child { border-bottom: none; }
+.vendor-row .v-name { font-weight: 500; }
+.vendor-row .v-name .v-sub { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+.vendor-row .v-bar { height: 6px; background: var(--bg-sub); border-radius: 3px; overflow: hidden; position: relative; }
+.vendor-row .v-bar > span { display: block; height: 100%; background: var(--ink); border-radius: 3px; }
+.vendor-row .v-num { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-align: right; }
+.vendor-row .v-grade {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 6px;
+  background: var(--bg-sub);
+}
+.v-grade.A { background: var(--ok-soft); color: var(--ok); }
+.v-grade.B { background: var(--info-soft); color: var(--info); }
+.v-grade.C { background: var(--warning-soft); color: var(--warning); }
+.v-grade.D { background: var(--critical-soft); color: var(--critical); }
+
+/* ── ops header (decision inbox intro) ────────────────── */
+.ops-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 20px;
+}
+.ops-greet {
+  font-family: 'Instrument Serif', serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.ops-greet em { font-style: italic; color: var(--muted); }
+.ops-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.ops-now {
+  text-align: right;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+}
+.ops-now .time { font-size: 13px; color: var(--ink); display: block; }
+
+/* ── activity ticker ──────────────────────────────────── */
+.ticker {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 0 0 0 8px;
+  border-left: 1px solid var(--line);
+  margin-left: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.ticker-item { white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+.ticker-item .tdot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── sparkline mini chart ─────────────────────────────── */
+.spark { display: flex; align-items: flex-end; gap: 2px; height: 28px; }
+.spark span {
+  width: 4px;
+  background: var(--bg-sub);
+  border-radius: 1px;
+}
+.spark span.hi { background: var(--accent); }
+
+/* ── new ticket: fast form ────────────────────────────── */
+.fast-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  max-width: 720px;
+}
+.fast-form .step {
+  padding: 12px 0;
+}
+.fast-form .step + .step { border-top: 1px solid var(--line); }
+.fast-form .step-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted-2);
+  letter-spacing: 0.1em;
+}
+.fast-form .step h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 4px 0 14px;
+}
+
+.chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 18px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: all 0.12s;
+}
+.chip:hover { background: var(--bg-sub); }
+.chip.active { background: var(--ink); color: #FAFAF7; border-color: var(--ink); }
+
+/* ── decision intro panel (right rail on ops) ─────────── */
+.intro-panel {
+  background: var(--ink);
+  color: #E5E2D7;
+  border-radius: var(--radius);
+  padding: 22px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.intro-panel::before {
+  content: '';
+  position: absolute;
+  right: -40px; top: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(255,153,0,0.18), transparent 70%);
+}
+.intro-panel .ip-lbl { font-size: 10px; letter-spacing: 0.12em; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+.intro-panel h4 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 6px 0 12px;
+  color: #FAFAF7;
+}
+.intro-panel p { font-size: 13px; line-height: 1.6; color: #B6B0A0; }
+.intro-panel .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #2A2820; }
+.intro-panel .ms-l { font-size: 10px; letter-spacing: 0.08em; color: var(--muted-2); text-transform: uppercase; }
+.intro-panel .ms-v { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500; color: #FAFAF7; margin-top: 2px; }
+
+/* ── divider ───────────────────────────────────────────── */
+.hr-soft { height: 1px; background: var(--line); margin: 28px 0 22px; }
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
+/* ── status select inline ──────────────────────────────── */
+.status-select {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ── empty states ──────────────────────────────────────── */
+.empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+.empty i { font-size: 32px; color: var(--muted-2); }
+.empty p { font-size: 13px; margin: 10px 0 0; }
+
+/* ── scrollbars ────────────────────────────────────────── */
+.canvas::-webkit-scrollbar, .pulse::-webkit-scrollbar { width: 8px; height: 8px; }
+.canvas::-webkit-scrollbar-thumb, .pulse::-webkit-scrollbar-thumb { background: #D7D3C7; border-radius: 4px; }
+.canvas::-webkit-scrollbar-track, .pulse::-webkit-scrollbar-track { background: transparent; }
+
+</style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+// ── Amazon Now Egypt — facilities data ─────────────────
+// Amazon Now = quick-commerce dark stores. Smaller, more numerous than FCs.
+
+const BRANCHES = [
+  { id: 1,  code: "ANW-CAI-01", name: "Maadi Degla",         zone: "South Cairo", type: "Amazon Now Station", openedAt: "2023-04-12", sqm: 420, manager: "Karem Adel" },
+  { id: 2,  code: "ANW-CAI-02", name: "Maadi Sarayat",       zone: "South Cairo", type: "Amazon Now Station", openedAt: "2023-06-02", sqm: 380, manager: "Karem Adel" },
+  { id: 3,  code: "ANW-CAI-03", name: "Zamalek",             zone: "Central Cairo", type: "Amazon Now Station", openedAt: "2023-08-21", sqm: 360, manager: "M. Khalifa" },
+  { id: 4,  code: "ANW-CAI-04", name: "Heliopolis Korba",    zone: "East Cairo", type: "Amazon Now Station", openedAt: "2024-01-15", sqm: 410, manager: "Ali Werdany" },
+  { id: 5,  code: "ANW-CAI-05", name: "Nasr City — Makram",  zone: "East Cairo", type: "Amazon Now Station", openedAt: "2024-02-08", sqm: 440, manager: "Ali Werdany" },
+  { id: 6,  code: "ANW-CAI-06", name: "New Cairo — 90th St", zone: "New Cairo", type: "Amazon Now Station", openedAt: "2023-11-04", sqm: 520, manager: "Abdelrahman" },
+  { id: 7,  code: "ANW-CAI-07", name: "Rehab",               zone: "New Cairo", type: "Amazon Now Station", openedAt: "2024-04-30", sqm: 390, manager: "Abdelrahman" },
+  { id: 8,  code: "ANW-CAI-08", name: "Madinaty",            zone: "New Cairo", type: "Amazon Now Station", openedAt: "2024-07-19", sqm: 420, manager: "Abdelrahman" },
+  { id: 9,  code: "ANW-GZA-01", name: "Mohandessin",         zone: "Giza", type: "Amazon Now Station", openedAt: "2023-09-12", sqm: 370, manager: "Mostafa Khaled" },
+  { id: 10, code: "ANW-GZA-02", name: "Dokki",               zone: "Giza", type: "Amazon Now Station", openedAt: "2023-10-25", sqm: 340, manager: "Mostafa Khaled" },
+  { id: 11, code: "ANW-GZA-03", name: "6th October — Hosary",zone: "October & Zayed", type: "Amazon Now Station", openedAt: "2024-03-12", sqm: 480, manager: "Mostafa Khaled" },
+  { id: 12, code: "ANW-GZA-04", name: "Sheikh Zayed — Arkan",zone: "October & Zayed", type: "Amazon Now Station", openedAt: "2024-05-08", sqm: 510, manager: "M. Khalifa" },
+  { id: 13, code: "ANW-ALX-01", name: "Smouha",              zone: "Alexandria", type: "Amazon Now Station", openedAt: "2024-08-21", sqm: 400, manager: "Mostafa Khaled" },
+  { id: 14, code: "ANW-ALX-02", name: "Stanley",             zone: "Alexandria", type: "Amazon Now Station", openedAt: "2024-09-10", sqm: 380, manager: "Mostafa Khaled" },
+  { id: 15, code: "ANW-HQ-01",  name: "Smart Village HQ",    zone: "October & Zayed", type: "Office", openedAt: "2022-11-01", sqm: 1800, manager: "M. Khalifa" },
+  { id: 16, code: "ANW-DC-01",  name: "Obour Dark-DC",       zone: "East Cairo", type: "Distribution Center", openedAt: "2023-02-14", sqm: 2400, manager: "M. Khalifa" },
+];
+
+const VENDORS = [
+  { id: 1, name: "EL Hayah",      specialty: "Civil & Doors",        contact: "+20 100 555 0123", contractType: "Variable" },
+  { id: 2, name: "DAR",           specialty: "Network & IT",         contact: "+20 100 555 0145", contractType: "SLA" },
+  { id: 3, name: "MERGI",         specialty: "HVAC & Refrigeration", contact: "+20 100 555 0167", contractType: "Variable" },
+  { id: 4, name: "Electric Fire", specialty: "Electrical",           contact: "+20 100 555 0189", contractType: "Variable" },
+  { id: 5, name: "ORA",           specialty: "FF&E & Carpentry",     contact: "+20 100 555 0201", contractType: "PO-based" },
+  { id: 6, name: "Ice Berg",      specialty: "Cold Chain",           contact: "+20 100 555 0223", contractType: "SLA" },
+  { id: 7, name: "Internal",      specialty: "Tier-1 (in-house)",    contact: "ops@amazon-now.eg", contractType: "Salaried" },
+];
+
+const AGENTS = [
+  { id: 1, name: "M. Khalifa",      role: "Facilities Lead",     zone: "October & Zayed, Central Cairo" },
+  { id: 2, name: "Karem Adel",      role: "Site Coordinator",    zone: "South Cairo" },
+  { id: 3, name: "Ali Werdany",     role: "Site Coordinator",    zone: "East Cairo" },
+  { id: 4, name: "Abdelrahman M.",  role: "Site Coordinator",    zone: "New Cairo" },
+  { id: 5, name: "Mostafa Khaled",  role: "Regional Coordinator",zone: "Giza, Alex" },
+];
+
+const CATEGORIES = {
+  "HVAC":              { icon: "ti-snowflake",    color: "#0E6BA8", types: ["AC unit", "Walk-in chiller", "Walk-in freezer", "Ice maker", "Air curtain", "Ventilation"] },
+  "Civil":             { icon: "ti-tools",        color: "#7A6A50", types: ["Plumbing", "Painting", "Flooring", "Ceiling", "Wall / partition", "General civil"] },
+  "Doors & Glass":     { icon: "ti-door",         color: "#0E6BA8", types: ["Glass door", "Roll-up door", "Door mechanism", "Window", "Storefront"] },
+  "Electrical":        { icon: "ti-bolt",         color: "#B45309", types: ["Wiring", "Lighting", "UPS / battery", "Breaker / panel", "Generator"] },
+  "Network & IT":      { icon: "ti-wifi",         color: "#1D4ED8", types: ["WiFi / network", "CCTV cameras", "Printer", "POS / scanner", "Cabling"] },
+  "FF&E":              { icon: "ti-armchair-2",   color: "#6F37B0", types: ["Shelving", "Picking cart", "Workbench", "Office furniture"] },
+  "Cleaning & Pest":   { icon: "ti-spray",        color: "#1F7A4D", types: ["Deep cleaning", "Pest control", "Waste removal"] },
+  "Safety & Security": { icon: "ti-shield",       color: "#C92A2A", types: ["Fire system", "Alarm", "Access control", "Signage"] },
+};
+
+const STATUSES = [
+  { key: "New",              cls: "badge-status-new",       desc: "Just reported, awaiting triage." },
+  { key: "In Progress",      cls: "badge-status-progress",  desc: "Assigned, work underway." },
+  { key: "Pending",          cls: "badge-status-pending",   desc: "Blocked — waiting for parts or info." },
+  { key: "Waiting Approval", cls: "badge-status-waiting",   desc: "Cost over threshold — needs sign-off." },
+  { key: "In Maintenance",   cls: "badge-status-maint",     desc: "Vendor on-site, repairing." },
+  { key: "Closed",           cls: "badge-status-closed",    desc: "Resolved and signed off." },
+  { key: "Rejected",         cls: "badge-status-rejected",  desc: "Not actionable / out of scope." },
+  { key: "Duplicate",        cls: "badge-status-duplicate", desc: "Same as another open ticket." },
+];
+
+const PRIORITIES = [
+  { key: "Low",       cls: "badge-prio-low"       },
+  { key: "Medium",    cls: "badge-prio-medium"    },
+  { key: "High",      cls: "badge-prio-high"      },
+  { key: "Quotation", cls: "badge-prio-quotation" },
+];
+
+const MAINT_TYPES = ["Maintenance", "Modification", "Installation", "Supply", "Removal", "Inspection", "Emergency"];
+
+// helpers used to build sample tickets
+const d = (offsetDays) => {
+  const x = new Date("2026-05-15");
+  x.setDate(x.getDate() + offsetDays);
+  return x.toISOString().split("T")[0];
+};
+
+const TICKETS = [
+  // — Active / urgent ────────────────────────────────────────
+  { id: 1,  code: "ANW-26-0148", title: "Walk-in freezer F-02 temp alarm",         description: "Freezer holding +4°C, should be -18°C. Frozen SKUs at risk. Vendor en route.",                              branchId: 1,  category: "HVAC",              ticketType: "Walk-in freezer", agentId: 1, vendorId: 6, status: "In Maintenance",    maintenanceType: "Emergency",     priority: "High",      sparePartsCost: 4200, visitCost: 1800, createdDate: d(-1),  closedDate: "", reporter: "Store Lead — Maadi Degla" },
+  { id: 2,  code: "ANW-26-0147", title: "Storefront glass cracked overnight",      description: "Right pane of main entrance cracked. Suspected vandalism. Photos attached.",                             branchId: 3,  category: "Doors & Glass",     ticketType: "Glass door",      agentId: 1, vendorId: 1, status: "Waiting Approval",  maintenanceType: "Modification",  priority: "High",      sparePartsCost: 8500, visitCost: 1500, createdDate: d(-2),  closedDate: "", reporter: "Security — Zamalek" },
+  { id: 3,  code: "ANW-26-0146", title: "Half lighting dead in picking area",       description: "Track on aisle 3 not working. Pickers using phone torches. Tested breaker, not the cause.",              branchId: 6,  category: "Electrical",        ticketType: "Lighting",        agentId: 4, vendorId: 4, status: "In Progress",       maintenanceType: "Maintenance",   priority: "High",      sparePartsCost: 950,  visitCost: 800,  createdDate: d(-1),  closedDate: "", reporter: "Shift Lead — New Cairo" },
+  { id: 4,  code: "ANW-26-0145", title: "POS scanner #3 not reading",                description: "Scanner doesn't read barcodes. Restarted POS, no change. Likely hardware.",                             branchId: 4,  category: "Network & IT",      ticketType: "POS / scanner",   agentId: 3, vendorId: 2, status: "In Progress",       maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 0,    visitCost: 600,  createdDate: d(-1),  closedDate: "", reporter: "Store Lead — Heliopolis" },
+  { id: 5,  code: "ANW-26-0144", title: "WiFi drops every ~20 minutes",              description: "Repeated WiFi outages disrupting handheld scanners. Reported by 3 picking staff today.",               branchId: 11, category: "Network & IT",      ticketType: "WiFi / network",  agentId: 5, vendorId: 2, status: "Pending",           maintenanceType: "Maintenance",   priority: "High",      sparePartsCost: 0,    visitCost: 0,    createdDate: d(-3),  closedDate: "", reporter: "Store Lead — 6 October" },
+  { id: 6,  code: "ANW-26-0143", title: "Roll-up door won't fully close",            description: "Loading bay roll-up door stops 30cm above ground. Manual close possible.",                              branchId: 16, category: "Doors & Glass",     ticketType: "Roll-up door",    agentId: 1, vendorId: 1, status: "Pending",           maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 0,    visitCost: 0,    createdDate: d(-4),  closedDate: "", reporter: "DC Supervisor — Obour" },
+  { id: 7,  code: "ANW-26-0142", title: "Office chairs — replace damaged set",       description: "8 ergonomic chairs in OOC room beyond repair. Supply requested.",                                     branchId: 15, category: "FF&E",              ticketType: "Office furniture",agentId: 1, vendorId: 5, status: "Waiting Approval",  maintenanceType: "Supply",        priority: "Low",       sparePartsCost: 9600, visitCost: 0,    createdDate: d(-3),  closedDate: "", reporter: "Admin — Smart Village HQ" },
+
+  // — New (not yet triaged) ─────────────────────────────────
+  { id: 8,  code: "ANW-26-0141", title: "AC dripping water on stock — aisle 5",      description: "Indoor unit dripping condensate. Tarps placed under, but FMCG stock area below.",                       branchId: 7,  category: "HVAC",              ticketType: "AC unit",         agentId: null, vendorId: null, status: "New",          maintenanceType: "Maintenance",   priority: "High",      sparePartsCost: 0,    visitCost: 0,    createdDate: d(0),  closedDate: "", reporter: "Store Lead — Rehab" },
+  { id: 9,  code: "ANW-26-0140", title: "Ceiling tile water stain forming",          description: "Brown stain appeared on ceiling tile near server cabinet. No active leak visible yet.",                 branchId: 9,  category: "Civil",             ticketType: "Ceiling",         agentId: null, vendorId: null, status: "New",          maintenanceType: "Inspection",    priority: "Medium",    sparePartsCost: 0,    visitCost: 0,    createdDate: d(0),  closedDate: "", reporter: "Store Lead — Mohandessin" },
+  { id: 10, code: "ANW-26-0139", title: "Camera #7 offline — back room",             description: "Camera covering rear stockroom offline since this morning shift change.",                              branchId: 5,  category: "Network & IT",      ticketType: "CCTV cameras",    agentId: null, vendorId: null, status: "New",          maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 0,    visitCost: 0,    createdDate: d(0),  closedDate: "", reporter: "Security — Nasr City" },
+
+  // — Recently closed ───────────────────────────────────────
+  { id: 11, code: "ANW-26-0138", title: "Replaced UPS battery — server cabinet",     description: "Preventive replacement before quarterly load test.",                                                  branchId: 15, category: "Electrical",        ticketType: "UPS / battery",   agentId: 1, vendorId: 4, status: "Closed",            maintenanceType: "Supply",        priority: "Medium",    sparePartsCost: 3800, visitCost: 1200, createdDate: d(-9),  closedDate: d(-2), reporter: "IT — HQ" },
+  { id: 12, code: "ANW-26-0137", title: "Quarterly pest control — all Cairo East",    description: "Scheduled pest control visit for East Cairo branches (4 stations).",                                  branchId: 4,  category: "Cleaning & Pest",   ticketType: "Pest control",    agentId: 3, vendorId: 7, status: "Closed",            maintenanceType: "Maintenance",   priority: "Low",       sparePartsCost: 0,    visitCost: 2400, createdDate: d(-12), closedDate: d(-5), reporter: "Schedule — Auto" },
+  { id: 13, code: "ANW-26-0136", title: "Repainted picking floor markings",          description: "Yellow & blue floor markings faded. Repainted overnight.",                                            branchId: 2,  category: "Civil",             ticketType: "Painting",        agentId: 2, vendorId: 1, status: "Closed",            maintenanceType: "Maintenance",   priority: "Low",       sparePartsCost: 600,  visitCost: 1500, createdDate: d(-15), closedDate: d(-9), reporter: "Store Lead — Maadi Sarayat" },
+  { id: 14, code: "ANW-26-0135", title: "Walk-in chiller compressor service",         description: "Annual service. Cleaned coils, replaced filters, tested defrost cycle.",                              branchId: 6,  category: "HVAC",              ticketType: "Walk-in chiller", agentId: 4, vendorId: 3, status: "Closed",            maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 1800, visitCost: 2200, createdDate: d(-18), closedDate: d(-11), reporter: "Store Lead — New Cairo" },
+  { id: 15, code: "ANW-26-0134", title: "Smouha — install new shelving section",     description: "Added 4 m of additional shelving in dry goods zone for new SKU expansion.",                            branchId: 13, category: "FF&E",              ticketType: "Shelving",        agentId: 5, vendorId: 5, status: "Closed",            maintenanceType: "Installation",  priority: "Medium",    sparePartsCost: 5400, visitCost: 1200, createdDate: d(-21), closedDate: d(-14), reporter: "Regional Ops" },
+  { id: 16, code: "ANW-26-0133", title: "Fixed leaky tap — back staff WC",            description: "Replaced cartridge in cold tap; leak stopped.",                                                       branchId: 10, category: "Civil",             ticketType: "Plumbing",        agentId: 5, vendorId: 7, status: "Closed",            maintenanceType: "Maintenance",   priority: "Low",       sparePartsCost: 120,  visitCost: 0,    createdDate: d(-22), closedDate: d(-21), reporter: "Store Lead — Dokki" },
+  { id: 17, code: "ANW-26-0132", title: "Replaced 12 LED tubes",                      description: "Aging LED tubes — bulk swap.",                                                                       branchId: 9,  category: "Electrical",        ticketType: "Lighting",        agentId: 5, vendorId: 4, status: "Closed",            maintenanceType: "Supply",        priority: "Low",       sparePartsCost: 1440, visitCost: 800,  createdDate: d(-25), closedDate: d(-18), reporter: "Store Lead — Mohandessin" },
+  { id: 18, code: "ANW-26-0131", title: "Door mechanism replaced — Rehab",            description: "Sliding door auto-close mechanism replaced after 18 months.",                                        branchId: 7,  category: "Doors & Glass",     ticketType: "Door mechanism",  agentId: 4, vendorId: 1, status: "Closed",            maintenanceType: "Modification",  priority: "Medium",    sparePartsCost: 2200, visitCost: 1500, createdDate: d(-28), closedDate: d(-20), reporter: "Store Lead — Rehab" },
+  { id: 19, code: "ANW-26-0130", title: "Fire alarm panel quarterly test",            description: "Scheduled inspection. All zones operational.",                                                       branchId: 16, category: "Safety & Security", ticketType: "Fire system",     agentId: 1, vendorId: 7, status: "Closed",            maintenanceType: "Inspection",    priority: "Medium",    sparePartsCost: 0,    visitCost: 1200, createdDate: d(-30), closedDate: d(-29), reporter: "Compliance" },
+  { id: 20, code: "ANW-26-0129", title: "Painted entrance wall — Stanley",            description: "Front wall scuffed from cart traffic. Repainted.",                                                   branchId: 14, category: "Civil",             ticketType: "Painting",        agentId: 5, vendorId: 1, status: "Closed",            maintenanceType: "Maintenance",   priority: "Low",       sparePartsCost: 400,  visitCost: 1000, createdDate: d(-32), closedDate: d(-27), reporter: "Store Lead — Stanley" },
+  { id: 21, code: "ANW-26-0128", title: "Stanley — replaced WiFi access point",       description: "AP showing intermittent issues for weeks; swapped under warranty.",                                  branchId: 14, category: "Network & IT",      ticketType: "WiFi / network",  agentId: 5, vendorId: 2, status: "Closed",            maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 0,    visitCost: 800,  createdDate: d(-35), closedDate: d(-30), reporter: "IT — Remote" },
+  { id: 22, code: "ANW-26-0127", title: "Madinaty — air curtain installation",        description: "New air curtain at main entrance to reduce HVAC load.",                                              branchId: 8,  category: "HVAC",              ticketType: "Air curtain",     agentId: 4, vendorId: 3, status: "Closed",            maintenanceType: "Installation",  priority: "Medium",    sparePartsCost: 6800, visitCost: 1800, createdDate: d(-40), closedDate: d(-34), reporter: "Regional Ops" },
+  { id: 23, code: "ANW-26-0126", title: "Smart Village HQ — server room AC service",  description: "Critical AC service. Cleaned, regassed, full diagnostic.",                                           branchId: 15, category: "HVAC",              ticketType: "AC unit",         agentId: 1, vendorId: 3, status: "Closed",            maintenanceType: "Maintenance",   priority: "High",      sparePartsCost: 2400, visitCost: 2200, createdDate: d(-42), closedDate: d(-38), reporter: "IT — HQ" },
+  { id: 24, code: "ANW-26-0125", title: "Korba — new picking cart batch",             description: "10 new picking carts supplied to replace damaged fleet.",                                            branchId: 4,  category: "FF&E",              ticketType: "Picking cart",    agentId: 3, vendorId: 5, status: "Closed",            maintenanceType: "Supply",        priority: "Low",       sparePartsCost: 7500, visitCost: 0,    createdDate: d(-45), closedDate: d(-40), reporter: "Regional Ops" },
+  { id: 25, code: "ANW-26-0124", title: "Annual safety signage refresh",              description: "Across-network signage refresh for compliance.",                                                    branchId: 1,  category: "Safety & Security", ticketType: "Signage",         agentId: 1, vendorId: 5, status: "Closed",            maintenanceType: "Supply",        priority: "Medium",    sparePartsCost: 3200, visitCost: 0,    createdDate: d(-50), closedDate: d(-44), reporter: "Compliance" },
+
+  // — Older mix (for historical breakdown) ─────────────────
+  { id: 26, code: "ANW-26-0123", title: "Generator monthly test — Obour",             description: "Routine load test passed.",                                                                          branchId: 16, category: "Electrical",        ticketType: "Generator",       agentId: 1, vendorId: 4, status: "Closed",            maintenanceType: "Inspection",    priority: "Medium",    sparePartsCost: 0,    visitCost: 1500, createdDate: d(-58), closedDate: d(-57), reporter: "Compliance" },
+  { id: 27, code: "ANW-26-0122", title: "Smouha access control panel replaced",       description: "RFID reader at staff entrance failed; replaced with new model.",                                    branchId: 13, category: "Safety & Security", ticketType: "Access control",  agentId: 5, vendorId: 2, status: "Closed",            maintenanceType: "Modification",  priority: "High",      sparePartsCost: 2800, visitCost: 1200, createdDate: d(-60), closedDate: d(-55), reporter: "Security" },
+  { id: 28, code: "ANW-26-0121", title: "Maadi Sarayat — pest inspection",            description: "Monthly inspection. No issues.",                                                                     branchId: 2,  category: "Cleaning & Pest",   ticketType: "Pest control",    agentId: 2, vendorId: 7, status: "Closed",            maintenanceType: "Inspection",    priority: "Low",       sparePartsCost: 0,    visitCost: 800,  createdDate: d(-62), closedDate: d(-61), reporter: "Compliance" },
+  { id: 29, code: "ANW-26-0120", title: "Zamalek — repaint cashier wall",             description: "Marks from POS station; repainted.",                                                                 branchId: 3,  category: "Civil",             ticketType: "Painting",        agentId: 1, vendorId: 1, status: "Closed",            maintenanceType: "Maintenance",   priority: "Low",       sparePartsCost: 350,  visitCost: 900,  createdDate: d(-65), closedDate: d(-60), reporter: "Store Lead — Zamalek" },
+  { id: 30, code: "ANW-26-0119", title: "Dokki — replace freezer door gasket",         description: "Door not sealing properly. Gasket replaced.",                                                       branchId: 10, category: "HVAC",              ticketType: "Walk-in freezer", agentId: 5, vendorId: 6, status: "Closed",            maintenanceType: "Maintenance",   priority: "Medium",    sparePartsCost: 1100, visitCost: 1500, createdDate: d(-70), closedDate: d(-65), reporter: "Store Lead — Dokki" },
+];
+
+// Make available on window for other scripts
+Object.assign(window, {
+  BRANCHES, VENDORS, AGENTS, CATEGORIES, STATUSES, PRIORITIES, MAINT_TYPES, TICKETS,
+});
+
+</script>
+  <script type="text/babel" data-presets="react">
+// ── shared components ───────────────────────────────────
+const { useState, useMemo, useEffect, useRef } = React;
+
+// — utility helpers ───────────────────────────────────────
+const fmtMoney = (n) => `EGP ${Math.round(n).toLocaleString()}`;
+const fmtMoneyShort = (n) => {
+  if (n >= 1_000_000) return `EGP ${(n/1_000_000).toFixed(1)}M`;
+  if (n >= 1_000)     return `EGP ${(n/1_000).toFixed(1)}K`;
+  return `EGP ${n}`;
+};
+const fmtDate = (iso) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+};
+const fmtDateFull = (iso) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+};
+const daysBetween = (a, b) => {
+  if (!a) return 0;
+  const end = b ? new Date(b) : new Date("2026-05-15");
+  return Math.max(0, Math.round((end - new Date(a)) / 86400000));
+};
+const ticketCost = (t) => (Number(t.sparePartsCost)||0) + (Number(t.visitCost)||0);
+const isOpen = (t) => !["Closed","Rejected","Duplicate"].includes(t.status);
+const isOverdue = (t) => isOpen(t) && daysBetween(t.createdDate) >= 7;
+
+// — Badge components ──────────────────────────────────────
+function StatusBadge({ status }) {
+  const cfg = STATUSES.find(s => s.key === status) || STATUSES[0];
+  return (
+    <span className={`badge ${cfg.cls}`}>
+      <span className="dot"></span>
+      {status}
+    </span>
+  );
+}
+
+function PrioBadge({ priority }) {
+  const cfg = PRIORITIES.find(p => p.key === priority) || PRIORITIES[1];
+  return <span className={`badge ${cfg.cls}`}>{priority}</span>;
+}
+
+// — Card scaffolding ──────────────────────────────────────
+function Card({ children, className = "" }) {
+  return <div className={`card ${className}`}>{children}</div>;
+}
+
+function CardHead({ title, count, urgent, action, icon }) {
+  return (
+    <div className="card-head">
+      <div className="card-title">
+        {icon && <i className={`ti ${icon}`} style={{ color: "var(--muted)" }}></i>}
+        {title}
+        {count !== undefined && <span className={`count ${urgent ? "urgent" : ""}`}>{count}</span>}
+      </div>
+      {action}
+    </div>
+  );
+}
+
+// — Pulse strip (branches as health-coloured chips) ───────
+function PulseStrip({ branches, tickets, onBranchClick }) {
+  const stations = branches.filter(b => b.type === "Amazon Now Station");
+  return (
+    <div className="pulse">
+      <div className="pulse-label">
+        <span className="live-dot"></span>
+        Live · {stations.length} stations
+      </div>
+      <div className="pulse-stations">
+        {stations.map(b => {
+          const open = tickets.filter(t => t.branchId === b.id && isOpen(t));
+          const crit = open.filter(t => t.priority === "High").length;
+          const cls  = crit > 0 ? "crit" : open.length > 0 ? "warn" : "ok";
+          return (
+            <div key={b.id} className={`pulse-station ${cls}`} onClick={() => onBranchClick(b.id)} title={b.name}>
+              <div className="ps-bar"></div>
+              <div className="ps-name">{b.name}</div>
+              <div className="ps-stat">
+                {open.length === 0 ? "all clear" : `${open.length} open${crit > 0 ? ` · ${crit} hi` : ""}`}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// — Lane item (used in decision inbox) ────────────────────
+function LaneItem({ ticket, branch, onClick }) {
+  return (
+    <div className="lane-item" onClick={() => onClick(ticket)}>
+      <div className="li-code mono">{ticket.code.replace("ANW-26-", "")}</div>
+      <div className="li-body">
+        <div className="li-title">{ticket.title}</div>
+        <div className="li-meta">
+          {branch?.name || "—"} · {ticket.category} · {daysBetween(ticket.createdDate)}d
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// — KPI tile ──────────────────────────────────────────────
+function Kpi({ label, value, unit, sub, delta }) {
+  return (
+    <div className="kpi">
+      <div className="kpi-label">{label}</div>
+      <div className="kpi-value">
+        {value}
+        {unit && <span className="unit">{unit}</span>}
+      </div>
+      {sub && <div className="kpi-sub">{sub}</div>}
+      {delta && (
+        <div className="kpi-sub">
+          <span className={delta.dir === "up" ? "delta-up" : "delta-down"}>
+            <i className={`ti ti-${delta.dir === "up" ? "trending-up" : "trending-down"}`}></i>
+            {delta.value}
+          </span>
+          <span>{delta.label}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// — vendor grade calculator ───────────────────────────────
+function vendorScore(vendor, allTickets) {
+  const ts = allTickets.filter(t => t.vendorId === vendor.id);
+  const closed = ts.filter(t => t.status === "Closed");
+  const avg = closed.length ? closed.reduce((s, t) => s + daysBetween(t.createdDate, t.closedDate), 0) / closed.length : 0;
+  const spend = ts.reduce((s, t) => s + ticketCost(t), 0);
+  // simple grade: A < 4d avg, B < 7, C < 12, D >=12
+  let grade = "—";
+  if (closed.length === 0) grade = "—";
+  else if (avg < 4)  grade = "A";
+  else if (avg < 7)  grade = "B";
+  else if (avg < 12) grade = "C";
+  else               grade = "D";
+  return { tickets: ts.length, closed: closed.length, avg: Math.round(avg * 10) / 10, spend, grade };
+}
+
+// — Group-by helper for Reports view ──────────────────────
+// Returns: [{ key, label, count, spend, avgDays, openCount, breakdown? }, ...]
+function groupTickets(tickets, dimension, lookups) {
+  const { branchById, vendorById, agentById } = lookups;
+  const map = new Map();
+  const keyOf = (t) => {
+    switch (dimension) {
+      case "branch":   return [t.branchId, branchById[t.branchId]?.name || "—"];
+      case "zone":     return [branchById[t.branchId]?.zone || "—", branchById[t.branchId]?.zone || "—"];
+      case "category": return [t.category, t.category];
+      case "vendor":   return [t.vendorId || 0, vendorById[t.vendorId]?.name || "Unassigned"];
+      case "agent":    return [t.agentId  || 0, agentById[t.agentId]?.name  || "Unassigned"];
+      case "status":   return [t.status, t.status];
+      case "priority": return [t.priority, t.priority];
+      case "maint":    return [t.maintenanceType, t.maintenanceType];
+      case "month":    {
+        const m = (t.createdDate || "").slice(0, 7);
+        return [m, m];
+      }
+      default: return ["—","—"];
+    }
+  };
+  for (const t of tickets) {
+    const [key, label] = keyOf(t);
+    if (!map.has(key)) map.set(key, { key, label, count: 0, spend: 0, days: 0, closedCount: 0, openCount: 0 });
+    const row = map.get(key);
+    row.count += 1;
+    row.spend += ticketCost(t);
+    if (t.status === "Closed") {
+      row.closedCount += 1;
+      row.days += daysBetween(t.createdDate, t.closedDate);
+    }
+    if (isOpen(t)) row.openCount += 1;
+  }
+  const rows = Array.from(map.values()).map(r => ({
+    ...r,
+    avgDays: r.closedCount ? Math.round((r.days / r.closedCount) * 10) / 10 : null,
+  }));
+  return rows.sort((a, b) => b.spend - a.spend || b.count - a.count);
+}
+
+// Expose
+Object.assign(window, {
+  fmtMoney, fmtMoneyShort, fmtDate, fmtDateFull, daysBetween, ticketCost, isOpen, isOverdue,
+  StatusBadge, PrioBadge, Card, CardHead, PulseStrip, LaneItem, Kpi, vendorScore, groupTickets,
+});
+
+</script>
+  <script type="text/babel" data-presets="react">
+// ── Views ───────────────────────────────────────────────
+
+// ============================================================================
+// OPS DASHBOARD — the "decision inbox"
+// ============================================================================
+function OpsView({ tickets, branches, vendors, agents, onOpenTicket, onGotoView, onOpenBranch }) {
+  const branchById = useMemo(() => Object.fromEntries(branches.map(b => [b.id, b])), [branches]);
+
+  // Decision lanes
+  const newTickets        = tickets.filter(t => t.status === "New");
+  const waitingApproval   = tickets.filter(t => t.status === "Waiting Approval");
+  const stuck             = tickets.filter(t => isOpen(t) && t.status !== "New" && t.status !== "Waiting Approval" && daysBetween(t.createdDate) >= 4);
+
+  // KPIs (this period vs last)
+  const openTotal   = tickets.filter(isOpen).length;
+  const monthSpend  = tickets
+    .filter(t => (t.createdDate || "").startsWith("2026-05") || (t.createdDate || "").startsWith("2026-04"))
+    .reduce((s,t) => s + ticketCost(t), 0);
+  const closedThis  = tickets.filter(t => t.status === "Closed");
+  const avgClose    = closedThis.length
+    ? Math.round((closedThis.reduce((s,t) => s + daysBetween(t.createdDate, t.closedDate), 0) / closedThis.length) * 10) / 10
+    : 0;
+  const slaBreach   = tickets.filter(isOverdue).length;
+
+  const now = new Date("2026-05-15T09:14:00");
+  const hour = now.getHours();
+  const greeting = hour < 12 ? "Morning" : hour < 17 ? "Afternoon" : "Evening";
+
+  return (
+    <div className="canvas-inner">
+      {/* greeting */}
+      <div className="ops-header">
+        <div>
+          <h1 className="ops-greet">
+            <em>{greeting},</em> Khalifa.
+          </h1>
+          <div className="ops-sub">
+            You have <strong style={{ color: "var(--ink)" }}>{newTickets.length + waitingApproval.length} items</strong> that need a decision, and <strong style={{ color: "var(--ink)" }}>{slaBreach} tickets</strong> running long.
+          </div>
+        </div>
+        <div className="ops-now">
+          <span className="time">{now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span>
+          {now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}
+        </div>
+      </div>
+
+      <PulseStrip branches={branches} tickets={tickets} onBranchClick={onOpenBranch} />
+
+      {/* DECISION LANES — the heart of the view */}
+      <div className="lanes">
+        <div className="lane">
+          <div className="lane-head">
+            <div className="lane-tag triage"><span className="dot"></span> Needs triage</div>
+            <div className="lane-title">
+              <span className={`num ${newTickets.length === 0 ? "zero" : ""}`}>{newTickets.length}</span>
+              <span className="lbl">new · unassigned</span>
+            </div>
+          </div>
+          <div className="lane-body">
+            {newTickets.length === 0
+              ? <div className="lane-empty">Inbox zero. ✶</div>
+              : newTickets.slice(0, 5).map(t => (
+                  <LaneItem key={t.id} ticket={t} branch={branchById[t.branchId]} onClick={onOpenTicket} />
+                ))}
+          </div>
+        </div>
+
+        <div className="lane">
+          <div className="lane-head">
+            <div className="lane-tag approve"><span className="dot"></span> Awaiting your approval</div>
+            <div className="lane-title">
+              <span className={`num ${waitingApproval.length === 0 ? "zero" : ""}`}>{waitingApproval.length}</span>
+              <span className="lbl">cost sign-off</span>
+            </div>
+          </div>
+          <div className="lane-body">
+            {waitingApproval.length === 0
+              ? <div className="lane-empty">Nothing pending.</div>
+              : waitingApproval.slice(0, 5).map(t => (
+                  <LaneItem key={t.id} ticket={t} branch={branchById[t.branchId]} onClick={onOpenTicket} />
+                ))}
+          </div>
+        </div>
+
+        <div className="lane">
+          <div className="lane-head">
+            <div className="lane-tag stuck"><span className="dot"></span> Stuck &gt; 4 days</div>
+            <div className="lane-title">
+              <span className={`num ${stuck.length === 0 ? "zero" : ""}`}>{stuck.length}</span>
+              <span className="lbl">follow-up vendor</span>
+            </div>
+          </div>
+          <div className="lane-body">
+            {stuck.length === 0
+              ? <div className="lane-empty">Nothing stuck.</div>
+              : stuck.slice(0, 5).map(t => (
+                  <LaneItem key={t.id} ticket={t} branch={branchById[t.branchId]} onClick={onOpenTicket} />
+                ))}
+          </div>
+        </div>
+      </div>
+
+      {/* KPI row */}
+      <div className="cols-4" style={{ marginBottom: 22 }}>
+        <Kpi label="Open tickets" value={openTotal} sub={`across ${branches.filter(b => tickets.some(t => t.branchId === b.id && isOpen(t))).length} sites`} />
+        <Kpi label="This month spend" value={fmtMoneyShort(monthSpend)} sub="parts + visits" />
+        <Kpi label="Avg time to close" value={avgClose} unit="days" sub={`from ${closedThis.length} closed`} />
+        <Kpi label="Running over 7 days" value={slaBreach} sub={slaBreach === 0 ? "all on track" : "needs attention"} />
+      </div>
+
+      {/* TWO COL: Activity + intro panel */}
+      <div className="cols-2">
+        <div className="stack">
+          <Card>
+            <CardHead title="Recent activity" action={<button className="btn btn-sm btn-ghost" onClick={() => onGotoView("tickets")}>All tickets <i className="ti ti-arrow-right"></i></button>} />
+            <table className="tbl">
+              <thead><tr>
+                <th>Ticket</th><th>Title</th><th>Branch</th><th>Status</th><th style={{ textAlign: "right" }}>Cost</th>
+              </tr></thead>
+              <tbody>
+                {tickets.slice(0, 7).map(t => (
+                  <tr key={t.id} className="clickable" onClick={() => onOpenTicket(t)}>
+                    <td><span className="code">{t.code}</span></td>
+                    <td><div className="title-cell">{t.title}</div></td>
+                    <td className="muted">{branchById[t.branchId]?.name || "—"}</td>
+                    <td><StatusBadge status={t.status} /></td>
+                    <td className="num" style={{ textAlign: "right" }}>{ticketCost(t) ? fmtMoney(ticketCost(t)) : "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
+        </div>
+
+        <div className="stack">
+          <div className="intro-panel">
+            <div className="ip-lbl">Today's brief</div>
+            <h4>Highest-impact item right now</h4>
+            <p>
+              {newTickets.find(t => t.priority === "High")?.title ||
+               tickets.find(t => t.priority === "High" && isOpen(t))?.title ||
+               "No high-priority items right now. Nice."}
+            </p>
+            <div className="mini-stats">
+              <div>
+                <div className="ms-l">Active vendors</div>
+                <div className="ms-v">{new Set(tickets.filter(isOpen).map(t => t.vendorId).filter(Boolean)).size}</div>
+              </div>
+              <div>
+                <div className="ms-l">Branches on alert</div>
+                <div className="ms-v">{branches.filter(b => tickets.some(t => t.branchId === b.id && isOpen(t) && t.priority === "High")).length}</div>
+              </div>
+            </div>
+          </div>
+
+          <Card>
+            <CardHead title="Top spend · this period" />
+            <div style={{ padding: "6px 0 10px" }}>
+              {branches
+                .map(b => ({ ...b, spend: tickets.filter(t => t.branchId === b.id).reduce((s,t) => s + ticketCost(t), 0) }))
+                .filter(b => b.spend > 0)
+                .sort((a,b) => b.spend - a.spend)
+                .slice(0, 6)
+                .map(b => {
+                  const max = Math.max(...branches.map(x => tickets.filter(t => t.branchId === x.id).reduce((s,t) => s + ticketCost(t), 0)));
+                  return (
+                    <div key={b.id} style={{ padding: "8px 18px", display: "grid", gridTemplateColumns: "1fr 70px 80px", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => onOpenBranch(b.id)}>
+                      <span style={{ fontSize: 13, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{b.name}</span>
+                      <div style={{ height: 4, background: "var(--bg-sub)", borderRadius: 2, overflow: "hidden" }}>
+                        <div style={{ width: `${(b.spend/max)*100}%`, height: "100%", background: "var(--ink)" }}></div>
+                      </div>
+                      <span className="mono" style={{ fontSize: 12, textAlign: "right", color: "var(--ink-2)" }}>{fmtMoneyShort(b.spend)}</span>
+                    </div>
+                  );
+                })}
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// TICKETS — list with filters
+// ============================================================================
+function TicketsView({ tickets, branches, vendors, agents, onOpenTicket, onNewTicket }) {
+  const [tab, setTab] = useState("all"); // all | open | mine | closed
+  const [filters, setFilters] = useState({ search: "", status: "", branchId: "", category: "", priority: "", vendorId: "" });
+
+  const branchById = useMemo(() => Object.fromEntries(branches.map(b => [b.id, b])), [branches]);
+  const vendorById = useMemo(() => Object.fromEntries(vendors.map(v => [v.id, v])), [vendors]);
+  const agentById  = useMemo(() => Object.fromEntries(agents.map(a => [a.id, a])), [agents]);
+
+  let filtered = tickets;
+  if (tab === "open")   filtered = filtered.filter(isOpen);
+  if (tab === "closed") filtered = filtered.filter(t => t.status === "Closed");
+  if (tab === "mine")   filtered = filtered.filter(t => t.agentId === 1); // M. Khalifa as "me"
+  if (filters.status)   filtered = filtered.filter(t => t.status === filters.status);
+  if (filters.branchId) filtered = filtered.filter(t => t.branchId === Number(filters.branchId));
+  if (filters.category) filtered = filtered.filter(t => t.category === filters.category);
+  if (filters.priority) filtered = filtered.filter(t => t.priority === filters.priority);
+  if (filters.vendorId) filtered = filtered.filter(t => t.vendorId === Number(filters.vendorId));
+  if (filters.search) {
+    const q = filters.search.toLowerCase();
+    filtered = filtered.filter(t => t.title.toLowerCase().includes(q) || t.code.toLowerCase().includes(q));
+  }
+
+  const counts = {
+    all:    tickets.length,
+    open:   tickets.filter(isOpen).length,
+    mine:   tickets.filter(t => t.agentId === 1).length,
+    closed: tickets.filter(t => t.status === "Closed").length,
+  };
+
+  return (
+    <div className="canvas-inner">
+      <div className="tabs">
+        {[["all","All"],["open","Open"],["mine","Assigned to me"],["closed","Closed"]].map(([k,l]) => (
+          <div key={k} className={`tab ${tab===k?"active":""}`} onClick={() => setTab(k)}>
+            {l} <span className="num">{counts[k]}</span>
+          </div>
+        ))}
+        <div style={{ marginLeft: "auto", display: "flex", gap: 8, alignItems: "center", paddingBottom: 6 }}>
+          <button className="btn btn-accent btn-sm" onClick={onNewTicket}>
+            <i className="ti ti-plus"></i> New ticket
+          </button>
+        </div>
+      </div>
+
+      <div className="filters">
+        <input className="input" placeholder="Search title or code…" value={filters.search} onChange={e => setFilters(f => ({ ...f, search: e.target.value }))} />
+        <select className="select" value={filters.status} onChange={e => setFilters(f => ({ ...f, status: e.target.value }))}>
+          <option value="">All statuses</option>
+          {STATUSES.map(s => <option key={s.key}>{s.key}</option>)}
+        </select>
+        <select className="select" value={filters.branchId} onChange={e => setFilters(f => ({ ...f, branchId: e.target.value }))}>
+          <option value="">All branches</option>
+          {branches.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+        </select>
+        <select className="select" value={filters.category} onChange={e => setFilters(f => ({ ...f, category: e.target.value }))}>
+          <option value="">All categories</option>
+          {Object.keys(CATEGORIES).map(c => <option key={c}>{c}</option>)}
+        </select>
+        <select className="select" value={filters.priority} onChange={e => setFilters(f => ({ ...f, priority: e.target.value }))}>
+          <option value="">All priorities</option>
+          {PRIORITIES.map(p => <option key={p.key}>{p.key}</option>)}
+        </select>
+        <select className="select" value={filters.vendorId} onChange={e => setFilters(f => ({ ...f, vendorId: e.target.value }))}>
+          <option value="">All vendors</option>
+          {vendors.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
+        </select>
+        {Object.values(filters).some(Boolean) && (
+          <button className="btn btn-sm btn-ghost" onClick={() => setFilters({ search: "", status: "", branchId: "", category: "", priority: "", vendorId: "" })}>
+            <i className="ti ti-x"></i> Clear
+          </button>
+        )}
+        <span className="filters-count">{filtered.length} of {tickets.length}</span>
+      </div>
+
+      <Card>
+        <table className="tbl">
+          <thead><tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Branch</th>
+            <th>Category</th>
+            <th>Vendor</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th style={{ textAlign: "right" }}>Cost</th>
+            <th style={{ textAlign: "right" }}>Age</th>
+          </tr></thead>
+          <tbody>
+            {filtered.length === 0 ? (
+              <tr><td colSpan={9}><div className="empty"><i className="ti ti-search-off"></i><p>No tickets match these filters.</p></div></td></tr>
+            ) : filtered.map(t => (
+              <tr key={t.id} className="clickable" onClick={() => onOpenTicket(t)}>
+                <td><span className="code">{t.code}</span></td>
+                <td><div className="title-cell">{t.title}</div></td>
+                <td className="muted" style={{ maxWidth: 160, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{branchById[t.branchId]?.name}</td>
+                <td className="muted">{t.category}</td>
+                <td className="muted">{vendorById[t.vendorId]?.name || "—"}</td>
+                <td><StatusBadge status={t.status} /></td>
+                <td><PrioBadge priority={t.priority} /></td>
+                <td className="num" style={{ textAlign: "right" }}>{ticketCost(t) ? fmtMoney(ticketCost(t)) : "—"}</td>
+                <td className="num muted" style={{ textAlign: "right" }}>{daysBetween(t.createdDate, t.closedDate)}d</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+    </div>
+  );
+}
+
+// ============================================================================
+// TICKET DETAIL
+// ============================================================================
+function TicketDetail({ ticket, branches, vendors, agents, onUpdate }) {
+  const branch = branches.find(b => b.id === ticket.branchId);
+  const vendor = vendors.find(v => v.id === ticket.vendorId);
+  const agent  = agents.find(a => a.id === ticket.agentId);
+
+  // synthetic timeline
+  const events = [
+    { event: "Reported", detail: `By ${ticket.reporter}`, when: ticket.createdDate },
+    ticket.agentId ? { event: "Agent assigned", detail: `${agent?.name || "—"} took ownership`, when: ticket.createdDate } : null,
+    ticket.vendorId ? { event: "Vendor dispatched", detail: `${vendor?.name || "—"} notified`, when: ticket.createdDate } : null,
+    ticket.status === "In Maintenance" ? { event: "Vendor on-site", detail: "Repair in progress", when: ticket.createdDate, active: true } : null,
+    ticket.status === "Waiting Approval" ? { event: "Awaiting approval", detail: `${fmtMoney(ticketCost(ticket))} needs sign-off`, when: ticket.createdDate, active: true } : null,
+    ticket.status === "Pending" ? { event: "Blocked", detail: "Waiting for parts / info", when: ticket.createdDate, active: true } : null,
+    ticket.closedDate ? { event: "Closed", detail: "Signed off & resolved", when: ticket.closedDate, active: true } : null,
+  ].filter(Boolean);
+
+  return (
+    <div className="canvas-inner">
+      <div className="cols-detail">
+        <div className="stack">
+          <Card>
+            <div className="ticket-head">
+              <div className="row1">
+                <span className="code">{ticket.code}</span>
+                <StatusBadge status={ticket.status} />
+                <PrioBadge priority={ticket.priority} />
+                <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--muted)" }}>
+                  {fmtDateFull(ticket.createdDate)} · {daysBetween(ticket.createdDate, ticket.closedDate)} days
+                </span>
+              </div>
+              <h1>{ticket.title}</h1>
+              <p className="desc">{ticket.description || <em>No description provided.</em>}</p>
+            </div>
+
+            <div className="cost-grid">
+              <div>
+                <div className="cost-label">Spare parts</div>
+                <div className="cost-val">{fmtMoney(ticket.sparePartsCost || 0)}</div>
+              </div>
+              <div>
+                <div className="cost-label">Visit</div>
+                <div className="cost-val">{fmtMoney(ticket.visitCost || 0)}</div>
+              </div>
+              <div className="total">
+                <div className="cost-label">Total</div>
+                <div className="cost-val">{fmtMoney(ticketCost(ticket))}</div>
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <CardHead title="Activity timeline" icon="ti-timeline" />
+            <div className="timeline">
+              {events.map((e, i) => (
+                <div key={i} className="timeline-item">
+                  <div className={`timeline-dot ${e.active ? "active" : ""}`}></div>
+                  <div className="timeline-body">
+                    <div className="timeline-event">{e.event}</div>
+                    <div className="timeline-detail">{e.detail}</div>
+                    <div className="timeline-when">{fmtDateFull(e.when)}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <div className="stack">
+          <Card>
+            <CardHead title="Update status" />
+            <div style={{ padding: 16 }}>
+              <select className="select" value={ticket.status} onChange={e => onUpdate({ ...ticket, status: e.target.value, closedDate: ["Closed","Rejected"].includes(e.target.value) ? new Date("2026-05-15").toISOString().split("T")[0] : ticket.closedDate })}>
+                {STATUSES.map(s => <option key={s.key}>{s.key}</option>)}
+              </select>
+              <p style={{ fontSize: 11, color: "var(--muted)", marginTop: 10, lineHeight: 1.5 }}>
+                {STATUSES.find(s => s.key === ticket.status)?.desc}
+              </p>
+            </div>
+          </Card>
+
+          <Card>
+            <CardHead title="Details" />
+            <div className="meta-list">
+              <div className="meta-row"><span className="label">Branch</span><span className="val">{branch?.name || "—"}</span></div>
+              <div className="meta-row"><span className="label">Zone</span><span className="val">{branch?.zone || "—"}</span></div>
+              <div className="meta-row"><span className="label">Type</span><span className="val">{branch?.type || "—"}</span></div>
+              <div className="meta-row"><span className="label">Category</span><span className="val">{ticket.category} · {ticket.ticketType}</span></div>
+              <div className="meta-row"><span className="label">Maintenance</span><span className="val">{ticket.maintenanceType}</span></div>
+              <div className="meta-row"><span className="label">Reporter</span><span className="val">{ticket.reporter}</span></div>
+              <div className="meta-row"><span className="label">Assigned agent</span><span className="val">{agent?.name || "Unassigned"}</span></div>
+              <div className="meta-row"><span className="label">Vendor</span><span className="val">{vendor?.name || "Unassigned"}</span></div>
+              <div className="meta-row"><span className="label">Created</span><span className="val">{fmtDateFull(ticket.createdDate)}</span></div>
+              <div className="meta-row"><span className="label">Closed</span><span className="val">{fmtDateFull(ticket.closedDate)}</span></div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// NEW TICKET — fast 3-step form
+// ============================================================================
+function NewTicket({ branches, vendors, agents, onSubmit, onCancel }) {
+  const [form, setForm] = useState({
+    title: "", description: "",
+    branchId: "", category: "HVAC", ticketType: "",
+    priority: "Medium", maintenanceType: "Maintenance",
+    agentId: "", vendorId: "",
+    sparePartsCost: "", visitCost: "",
+  });
+  const [err, setErr] = useState("");
+
+  const submit = () => {
+    if (!form.title.trim() || !form.branchId) { setErr("Title and branch are required."); return; }
+    onSubmit(form);
+  };
+
+  return (
+    <div className="canvas-inner" style={{ maxWidth: 820 }}>
+      <div className="fast-form">
+        {err && <div style={{ background: "var(--critical-soft)", color: "var(--critical)", padding: "10px 14px", borderRadius: 7, fontSize: 13, marginBottom: 16 }}>{err}</div>}
+
+        <div className="step">
+          <div className="step-num">STEP 01 / 03</div>
+          <h3>What broke?</h3>
+          <div className="stack-sm">
+            <input className="input" placeholder="Short headline — e.g. AC dripping water on aisle 5" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} autoFocus />
+            <textarea className="textarea" placeholder="Add detail: where exactly, urgency, what's been tried…" value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
+          </div>
+        </div>
+
+        <div className="step">
+          <div className="step-num">STEP 02 / 03</div>
+          <h3>Where and what kind?</h3>
+
+          <div className="field" style={{ marginBottom: 14 }}>
+            <span className="field-label">Branch <span className="req">*</span></span>
+            <select className="select" value={form.branchId} onChange={e => setForm(f => ({ ...f, branchId: e.target.value }))}>
+              <option value="">Pick a branch…</option>
+              {branches.map(b => <option key={b.id} value={b.id}>{b.name} · {b.zone}</option>)}
+            </select>
+          </div>
+
+          <div className="field" style={{ marginBottom: 14 }}>
+            <span className="field-label">Category</span>
+            <div className="chip-row">
+              {Object.keys(CATEGORIES).map(c => (
+                <button key={c} className={`chip ${form.category === c ? "active" : ""}`} onClick={() => setForm(f => ({ ...f, category: c, ticketType: "" }))}>
+                  <i className={`ti ${CATEGORIES[c].icon}`} style={{ marginRight: 4 }}></i>
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="field" style={{ marginBottom: 14 }}>
+            <span className="field-label">Type</span>
+            <div className="chip-row">
+              {(CATEGORIES[form.category]?.types || []).map(t => (
+                <button key={t} className={`chip ${form.ticketType === t ? "active" : ""}`} onClick={() => setForm(f => ({ ...f, ticketType: t }))}>{t}</button>
+              ))}
+            </div>
+          </div>
+
+          <div className="field">
+            <span className="field-label">Priority</span>
+            <div className="chip-row">
+              {PRIORITIES.map(p => (
+                <button key={p.key} className={`chip ${form.priority === p.key ? "active" : ""}`} onClick={() => setForm(f => ({ ...f, priority: p.key }))}>{p.key}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="step">
+          <div className="step-num">STEP 03 / 03 · optional</div>
+          <h3>Triage now or later?</h3>
+          <p style={{ fontSize: 12, color: "var(--muted)", marginBottom: 14 }}>You can assign and cost later from the ticket page.</p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
+            <div className="field">
+              <span className="field-label">Agent</span>
+              <select className="select" value={form.agentId} onChange={e => setForm(f => ({ ...f, agentId: e.target.value }))}>
+                <option value="">Unassigned</option>
+                {agents.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <span className="field-label">Vendor</span>
+              <select className="select" value={form.vendorId} onChange={e => setForm(f => ({ ...f, vendorId: e.target.value }))}>
+                <option value="">Unassigned</option>
+                {vendors.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <span className="field-label">Spare parts (EGP)</span>
+              <input className="input" type="number" placeholder="0" value={form.sparePartsCost} onChange={e => setForm(f => ({ ...f, sparePartsCost: e.target.value }))} />
+            </div>
+            <div className="field">
+              <span className="field-label">Visit (EGP)</span>
+              <input className="input" type="number" placeholder="0" value={form.visitCost} onChange={e => setForm(f => ({ ...f, visitCost: e.target.value }))} />
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: 10, marginTop: 18, justifyContent: "flex-end" }}>
+          <button className="btn" onClick={onCancel}>Cancel</button>
+          <button className="btn btn-accent" onClick={submit}><i className="ti ti-check"></i> Create ticket</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// BRANCHES — grid + detail
+// ============================================================================
+function BranchesView({ branches, tickets, onOpenBranch }) {
+  const [zone, setZone] = useState("");
+  const [type, setType] = useState("");
+  const [search, setSearch] = useState("");
+
+  const zones = [...new Set(branches.map(b => b.zone))];
+  const types = [...new Set(branches.map(b => b.type))];
+
+  let filtered = branches;
+  if (zone)   filtered = filtered.filter(b => b.zone === zone);
+  if (type)   filtered = filtered.filter(b => b.type === type);
+  if (search) filtered = filtered.filter(b => b.name.toLowerCase().includes(search.toLowerCase()) || b.code.toLowerCase().includes(search.toLowerCase()));
+
+  return (
+    <div className="canvas-inner">
+      <div className="filters">
+        <input className="input" placeholder="Search branch…" value={search} onChange={e => setSearch(e.target.value)} />
+        <select className="select" value={zone} onChange={e => setZone(e.target.value)}>
+          <option value="">All zones</option>
+          {zones.map(z => <option key={z}>{z}</option>)}
+        </select>
+        <select className="select" value={type} onChange={e => setType(e.target.value)}>
+          <option value="">All types</option>
+          {types.map(t => <option key={t}>{t}</option>)}
+        </select>
+        <span className="filters-count">{filtered.length} branches</span>
+      </div>
+
+      <div className="branch-grid">
+        {filtered.map(b => {
+          const open = tickets.filter(t => t.branchId === b.id && isOpen(t));
+          const crit = open.filter(t => t.priority === "High").length;
+          const spend = tickets.filter(t => t.branchId === b.id).reduce((s,t) => s + ticketCost(t), 0);
+          const ttlTickets = tickets.filter(t => t.branchId === b.id).length;
+          const health = crit > 0 ? "crit" : open.length > 0 ? "warn" : "ok";
+          return (
+            <div key={b.id} className="branch-card" onClick={() => onOpenBranch(b.id)}>
+              <div className={`health-strip ${health}`}></div>
+              <div className="b-zone">{b.zone}</div>
+              <h3>{b.name}</h3>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: -8, marginBottom: 6 }}>
+                <span className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>{b.code}</span>
+                <span style={{ fontSize: 11, color: "var(--muted)" }}>· {b.type}</span>
+              </div>
+              <div className="b-stats">
+                <div>
+                  <div className="b-stat-l">Open</div>
+                  <div className={`b-stat-v ${open.length === 0 ? "zero" : crit > 0 ? "crit" : "warn"}`}>{open.length}</div>
+                </div>
+                <div>
+                  <div className="b-stat-l">High prio</div>
+                  <div className={`b-stat-v ${crit > 0 ? "crit" : "zero"}`}>{crit}</div>
+                </div>
+                <div>
+                  <div className="b-stat-l">All-time</div>
+                  <div className="b-stat-v">{ttlTickets}</div>
+                </div>
+                <div>
+                  <div className="b-stat-l">Total spend</div>
+                  <div className="b-stat-v" style={{ fontSize: 13 }}>{fmtMoneyShort(spend)}</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function BranchDetail({ branch, tickets, vendors, agents, branches, onOpenTicket }) {
+  const branchTickets = tickets.filter(t => t.branchId === branch.id);
+  const open = branchTickets.filter(isOpen);
+  const closed = branchTickets.filter(t => t.status === "Closed");
+  const totalSpend = branchTickets.reduce((s,t) => s + ticketCost(t), 0);
+  const avgClose = closed.length ? Math.round((closed.reduce((s,t) => s + daysBetween(t.createdDate, t.closedDate), 0) / closed.length) * 10) / 10 : 0;
+
+  // breakdown by category
+  const byCategory = Object.keys(CATEGORIES).map(c => ({
+    category: c,
+    count: branchTickets.filter(t => t.category === c).length,
+    spend: branchTickets.filter(t => t.category === c).reduce((s,t) => s + ticketCost(t), 0),
+  })).filter(c => c.count > 0).sort((a,b) => b.spend - a.spend);
+
+  return (
+    <div className="canvas-inner">
+      <div style={{ marginBottom: 22 }}>
+        <div className="section-eyebrow">{branch.zone} · {branch.type}</div>
+        <h1 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 36, fontWeight: 400, letterSpacing: "-0.01em", margin: "4px 0 4px" }}>{branch.name}</h1>
+        <div style={{ fontSize: 13, color: "var(--muted)" }}>
+          <span className="mono">{branch.code}</span> · {branch.sqm} m² · Manager: {branch.manager} · Opened {fmtDateFull(branch.openedAt)}
+        </div>
+      </div>
+
+      <div className="cols-4" style={{ marginBottom: 22 }}>
+        <Kpi label="Open tickets" value={open.length} sub={open.length === 0 ? "all clear" : `${open.filter(t => t.priority === "High").length} high prio`} />
+        <Kpi label="All-time tickets" value={branchTickets.length} sub={`${closed.length} closed`} />
+        <Kpi label="Total spend" value={fmtMoneyShort(totalSpend)} sub="parts + visits" />
+        <Kpi label="Avg time to close" value={avgClose} unit="days" sub={`from ${closed.length} closed`} />
+      </div>
+
+      <div className="cols-2">
+        <Card>
+          <CardHead title="All tickets" count={branchTickets.length} />
+          <table className="tbl">
+            <thead><tr>
+              <th>Code</th><th>Title</th><th>Status</th><th>Priority</th><th style={{ textAlign: "right" }}>Cost</th>
+            </tr></thead>
+            <tbody>
+              {branchTickets.map(t => (
+                <tr key={t.id} className="clickable" onClick={() => onOpenTicket(t)}>
+                  <td><span className="code">{t.code}</span></td>
+                  <td><div className="title-cell">{t.title}</div></td>
+                  <td><StatusBadge status={t.status} /></td>
+                  <td><PrioBadge priority={t.priority} /></td>
+                  <td className="num" style={{ textAlign: "right" }}>{ticketCost(t) ? fmtMoney(ticketCost(t)) : "—"}</td>
+                </tr>
+              ))}
+              {branchTickets.length === 0 && <tr><td colSpan={5}><div className="empty"><i className="ti ti-checkbox"></i><p>No tickets recorded for this branch yet.</p></div></td></tr>}
+            </tbody>
+          </table>
+        </Card>
+
+        <div className="stack">
+          <Card>
+            <CardHead title="Spend by category" />
+            <div style={{ padding: "10px 0" }}>
+              {byCategory.length === 0 && <div className="lane-empty">No spend yet.</div>}
+              {byCategory.map(c => {
+                const max = Math.max(...byCategory.map(x => x.spend));
+                return (
+                  <div key={c.category} style={{ padding: "8px 18px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 }}>
+                      <span><i className={`ti ${CATEGORIES[c.category].icon}`} style={{ color: "var(--muted)", marginRight: 6 }}></i>{c.category}</span>
+                      <span className="mono" style={{ color: "var(--ink-2)" }}>{fmtMoneyShort(c.spend)}</span>
+                    </div>
+                    <div style={{ height: 3, background: "var(--bg-sub)", borderRadius: 2, overflow: "hidden" }}>
+                      <div style={{ width: `${(c.spend/max)*100}%`, height: "100%", background: "var(--ink)" }}></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// VENDORS — scorecard
+// ============================================================================
+function VendorsView({ vendors, tickets, branches }) {
+  const rows = vendors.map(v => ({ vendor: v, ...vendorScore(v, tickets) })).sort((a,b) => b.spend - a.spend);
+  const maxSpend = Math.max(...rows.map(r => r.spend), 1);
+  const totalSpend = rows.reduce((s,r) => s + r.spend, 0);
+
+  return (
+    <div className="canvas-inner">
+      <div style={{ marginBottom: 22 }}>
+        <div className="section-eyebrow">Vendor performance</div>
+        <h1 className="section-title">{vendors.length} active vendors · {fmtMoneyShort(totalSpend)} all-time</h1>
+      </div>
+
+      <Card>
+        <div className="vendor-row" style={{ background: "var(--surface-2)", borderBottom: "1px solid var(--line)" }}>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase" }}>Vendor</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase" }}>Share of spend</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase", textAlign: "right" }}>Tickets</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase", textAlign: "right" }}>Avg close</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase", textAlign: "right" }}>Spend</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase", textAlign: "right" }}>Grade</div>
+        </div>
+        {rows.map(r => (
+          <div key={r.vendor.id} className="vendor-row">
+            <div className="v-name">
+              {r.vendor.name}
+              <div className="v-sub">{r.vendor.specialty} · {r.vendor.contractType}</div>
+            </div>
+            <div className="v-bar"><span style={{ width: `${(r.spend / maxSpend) * 100}%` }}></span></div>
+            <div className="v-num">{r.tickets}</div>
+            <div className="v-num">{r.avg ? `${r.avg}d` : "—"}</div>
+            <div className="v-num">{fmtMoneyShort(r.spend)}</div>
+            <div style={{ textAlign: "right" }}><span className={`v-grade ${r.grade}`}>{r.grade}</span></div>
+          </div>
+        ))}
+      </Card>
+    </div>
+  );
+}
+
+// ============================================================================
+// REPORTS — group-by breakdown with filters (★ the one user asked for)
+// ============================================================================
+function ReportsView({ tickets, branches, vendors, agents }) {
+  const [groupBy, setGroupBy] = useState("branch");
+  const [metric, setMetric]   = useState("spend"); // spend | count | avgDays
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo,   setDateTo]   = useState("");
+  const [filters, setFilters] = useState({ status: "", branchId: "", category: "", priority: "", vendorId: "", zone: "", maintenanceType: "" });
+
+  const branchById = useMemo(() => Object.fromEntries(branches.map(b => [b.id, b])), [branches]);
+  const vendorById = useMemo(() => Object.fromEntries(vendors.map(v => [v.id, v])), [vendors]);
+  const agentById  = useMemo(() => Object.fromEntries(agents.map(a => [a.id, a])), [agents]);
+
+  // apply filters
+  let scoped = tickets;
+  if (dateFrom) scoped = scoped.filter(t => t.createdDate >= dateFrom);
+  if (dateTo)   scoped = scoped.filter(t => t.createdDate <= dateTo);
+  if (filters.status)          scoped = scoped.filter(t => t.status === filters.status);
+  if (filters.branchId)        scoped = scoped.filter(t => t.branchId === Number(filters.branchId));
+  if (filters.category)        scoped = scoped.filter(t => t.category === filters.category);
+  if (filters.priority)        scoped = scoped.filter(t => t.priority === filters.priority);
+  if (filters.vendorId)        scoped = scoped.filter(t => t.vendorId === Number(filters.vendorId));
+  if (filters.zone)            scoped = scoped.filter(t => branchById[t.branchId]?.zone === filters.zone);
+  if (filters.maintenanceType) scoped = scoped.filter(t => t.maintenanceType === filters.maintenanceType);
+
+  const rows = groupTickets(scoped, groupBy, { branchById, vendorById, agentById });
+
+  // sort by chosen metric
+  rows.sort((a, b) => {
+    if (metric === "spend")   return b.spend - a.spend;
+    if (metric === "count")   return b.count - a.count;
+    if (metric === "avgDays") return (b.avgDays ?? -1) - (a.avgDays ?? -1);
+    return 0;
+  });
+
+  const totals = {
+    count: scoped.length,
+    spend: scoped.reduce((s,t) => s + ticketCost(t), 0),
+    open:  scoped.filter(isOpen).length,
+    closed:scoped.filter(t => t.status === "Closed").length,
+  };
+  const maxValue = Math.max(
+    ...rows.map(r => metric === "spend" ? r.spend : metric === "count" ? r.count : r.avgDays || 0),
+    1
+  );
+
+  const zones = [...new Set(branches.map(b => b.zone))];
+
+  const exportCsv = () => {
+    const head = [`Group by: ${groupBy}`, "label", "count", "openCount", "closedCount", "spend (EGP)", "avgDays"].join(",");
+    const lines = rows.map(r => [
+      "", JSON.stringify(r.label), r.count, r.openCount, r.closedCount, r.spend, r.avgDays ?? ""
+    ].join(","));
+    const csv = [head, ...lines].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `report-${groupBy}-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const groupLabels = {
+    branch:   "Branch",
+    zone:     "Zone",
+    category: "Category",
+    vendor:   "Vendor",
+    agent:    "Agent",
+    status:   "Status",
+    priority: "Priority",
+    maint:    "Maintenance type",
+    month:    "Month",
+  };
+
+  return (
+    <div className="canvas-inner">
+      <div style={{ marginBottom: 18 }}>
+        <div className="section-eyebrow">Reports</div>
+        <h1 className="section-title">Breakdown · group by {groupLabels[groupBy].toLowerCase()}</h1>
+      </div>
+
+      {/* Group-by selector */}
+      <Card>
+        <div style={{ padding: "14px 18px", display: "flex", gap: 18, alignItems: "center", borderBottom: "1px solid var(--line)", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase" }}>Group by</span>
+            <div className="chip-row">
+              {Object.entries(groupLabels).map(([k, l]) => (
+                <button key={k} className={`chip ${groupBy === k ? "active" : ""}`} onClick={() => setGroupBy(k)}>{l}</button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ height: 36, width: 1, background: "var(--line)" }}></div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase" }}>Sort by</span>
+            <div className="chip-row">
+              {[["spend","Spend"],["count","Ticket count"],["avgDays","Avg time to close"]].map(([k,l]) => (
+                <button key={k} className={`chip ${metric === k ? "active" : ""}`} onClick={() => setMetric(k)}>{l}</button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginLeft: "auto" }}>
+            <button className="btn btn-sm" onClick={exportCsv}><i className="ti ti-download"></i> Export CSV</button>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div style={{ padding: "12px 18px", borderBottom: "1px solid var(--line)", background: "var(--surface-2)" }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginRight: 4 }}>Filters</span>
+
+            <input type="date" className="select" style={{ width: "auto" }} value={dateFrom} onChange={e => setDateFrom(e.target.value)} title="From date" />
+            <span style={{ color: "var(--muted)" }}>→</span>
+            <input type="date" className="select" style={{ width: "auto" }} value={dateTo} onChange={e => setDateTo(e.target.value)} title="To date" />
+
+            <select className="select" style={{ width: "auto" }} value={filters.zone} onChange={e => setFilters(f => ({ ...f, zone: e.target.value }))}>
+              <option value="">All zones</option>
+              {zones.map(z => <option key={z}>{z}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.branchId} onChange={e => setFilters(f => ({ ...f, branchId: e.target.value }))}>
+              <option value="">All branches</option>
+              {branches.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.category} onChange={e => setFilters(f => ({ ...f, category: e.target.value }))}>
+              <option value="">All categories</option>
+              {Object.keys(CATEGORIES).map(c => <option key={c}>{c}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.vendorId} onChange={e => setFilters(f => ({ ...f, vendorId: e.target.value }))}>
+              <option value="">All vendors</option>
+              {vendors.map(v => <option key={v.id} value={v.id}>{v.name}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.status} onChange={e => setFilters(f => ({ ...f, status: e.target.value }))}>
+              <option value="">All statuses</option>
+              {STATUSES.map(s => <option key={s.key}>{s.key}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.priority} onChange={e => setFilters(f => ({ ...f, priority: e.target.value }))}>
+              <option value="">All priorities</option>
+              {PRIORITIES.map(p => <option key={p.key}>{p.key}</option>)}
+            </select>
+            <select className="select" style={{ width: "auto" }} value={filters.maintenanceType} onChange={e => setFilters(f => ({ ...f, maintenanceType: e.target.value }))}>
+              <option value="">All maint. types</option>
+              {MAINT_TYPES.map(m => <option key={m}>{m}</option>)}
+            </select>
+
+            {(Object.values(filters).some(Boolean) || dateFrom || dateTo) && (
+              <button className="btn btn-sm btn-ghost" onClick={() => { setFilters({ status: "", branchId: "", category: "", priority: "", vendorId: "", zone: "", maintenanceType: "" }); setDateFrom(""); setDateTo(""); }}>
+                <i className="ti ti-x"></i> Clear
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Totals strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderBottom: "1px solid var(--line)" }}>
+          {[
+            { l: "Tickets in scope", v: totals.count, mono: false },
+            { l: "Open",  v: totals.open, mono: false },
+            { l: "Closed", v: totals.closed, mono: false },
+            { l: "Total spend", v: fmtMoneyShort(totals.spend), mono: true, accent: true },
+          ].map((s, i) => (
+            <div key={i} style={{ padding: "14px 18px", borderRight: i < 3 ? "1px solid var(--line)" : "none", background: s.accent ? "var(--accent-soft)" : "transparent" }}>
+              <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", color: "var(--muted)", textTransform: "uppercase" }}>{s.l}</div>
+              <div className="mono" style={{ fontSize: 20, fontWeight: 600, marginTop: 4, color: s.accent ? "var(--accent-ink)" : "var(--ink)" }}>{s.v}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Breakdown rows */}
+        <table className="tbl">
+          <thead><tr>
+            <th style={{ width: "30%" }}>{groupLabels[groupBy]}</th>
+            <th>Share</th>
+            <th style={{ textAlign: "right" }}>Tickets</th>
+            <th style={{ textAlign: "right" }}>Open</th>
+            <th style={{ textAlign: "right" }}>Closed</th>
+            <th style={{ textAlign: "right" }}>Avg close</th>
+            <th style={{ textAlign: "right" }}>Spend</th>
+          </tr></thead>
+          <tbody>
+            {rows.length === 0 ? (
+              <tr><td colSpan={7}><div className="empty"><i className="ti ti-chart-bar"></i><p>No data matches your filters.</p></div></td></tr>
+            ) : rows.map(r => {
+              const val = metric === "spend" ? r.spend : metric === "count" ? r.count : (r.avgDays || 0);
+              const pct = (val / maxValue) * 100;
+              return (
+                <tr key={r.key}>
+                  <td style={{ fontWeight: 500 }}>{r.label}</td>
+                  <td>
+                    <div style={{ height: 6, background: "var(--bg-sub)", borderRadius: 3, overflow: "hidden", minWidth: 120 }}>
+                      <div style={{ width: `${pct}%`, height: "100%", background: metric === "spend" ? "var(--accent)" : "var(--ink)" }}></div>
+                    </div>
+                  </td>
+                  <td className="num" style={{ textAlign: "right" }}>{r.count}</td>
+                  <td className="num" style={{ textAlign: "right", color: r.openCount ? "var(--warning)" : "var(--muted)" }}>{r.openCount}</td>
+                  <td className="num muted" style={{ textAlign: "right" }}>{r.closedCount}</td>
+                  <td className="num muted" style={{ textAlign: "right" }}>{r.avgDays !== null ? `${r.avgDays}d` : "—"}</td>
+                  <td className="num" style={{ textAlign: "right", fontWeight: 600 }}>{fmtMoney(r.spend)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
+
+      <div style={{ marginTop: 28 }}>
+        <div className="section-eyebrow">Cross-tab</div>
+        <h2 className="section-title">{groupLabels[groupBy]} × Category</h2>
+        <CrossTab rows={rows.slice(0, 8)} tickets={scoped} groupBy={groupBy} branchById={branchById} vendorById={vendorById} agentById={agentById} />
+      </div>
+    </div>
+  );
+}
+
+// Cross-tab table: rows = top groups, columns = categories
+function CrossTab({ rows, tickets, groupBy, branchById, vendorById, agentById }) {
+  const cats = Object.keys(CATEGORIES);
+  const keyOf = (t) => {
+    switch (groupBy) {
+      case "branch":   return t.branchId;
+      case "zone":     return branchById[t.branchId]?.zone;
+      case "category": return t.category;
+      case "vendor":   return t.vendorId || 0;
+      case "agent":    return t.agentId || 0;
+      case "status":   return t.status;
+      case "priority": return t.priority;
+      case "maint":    return t.maintenanceType;
+      case "month":    return (t.createdDate || "").slice(0,7);
+      default:         return null;
+    }
+  };
+
+  const cell = (rowKey, cat) => tickets.filter(t => keyOf(t) === rowKey && t.category === cat).reduce((s,t) => s + ticketCost(t), 0);
+
+  const maxCell = Math.max(...rows.flatMap(r => cats.map(c => cell(r.key, c))), 1);
+
+  return (
+    <Card>
+      <table className="tbl" style={{ tableLayout: "fixed" }}>
+        <thead><tr>
+          <th style={{ width: 180 }}>{groupBy === "branch" ? "Branch" : groupBy}</th>
+          {cats.map(c => <th key={c} style={{ textAlign: "right", fontSize: 9 }} title={c}>{c.split(" ")[0]}</th>)}
+          <th style={{ textAlign: "right" }}>Total</th>
+        </tr></thead>
+        <tbody>
+          {rows.map(r => {
+            const total = cats.reduce((s,c) => s + cell(r.key, c), 0);
+            return (
+              <tr key={r.key}>
+                <td style={{ fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</td>
+                {cats.map(c => {
+                  const v = cell(r.key, c);
+                  const intensity = v / maxCell;
+                  return (
+                    <td key={c} style={{ textAlign: "right", background: v > 0 ? `rgba(255,153,0,${0.08 + intensity * 0.45})` : "transparent" }}>
+                      <span className="mono" style={{ fontSize: 11, color: v > 0 ? "var(--ink)" : "var(--muted-2)" }}>
+                        {v > 0 ? fmtMoneyShort(v).replace("EGP ", "") : "·"}
+                      </span>
+                    </td>
+                  );
+                })}
+                <td className="num" style={{ textAlign: "right", fontWeight: 600 }}>{fmtMoneyShort(total)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Card>
+  );
+}
+
+// ============================================================================
+// SETTINGS (light)
+// ============================================================================
+function SettingsView({ branches, vendors, agents }) {
+  const [tab, setTab] = useState("branches");
+  const items = tab === "branches" ? branches : tab === "vendors" ? vendors : agents;
+
+  return (
+    <div className="canvas-inner" style={{ maxWidth: 900 }}>
+      <div style={{ marginBottom: 18 }}>
+        <div className="section-eyebrow">Settings</div>
+        <h1 className="section-title">Configure your workspace</h1>
+      </div>
+
+      <div className="tabs">
+        {[["branches",`Branches`],["vendors",`Vendors`],["agents",`Agents`]].map(([k,l]) => (
+          <div key={k} className={`tab ${tab===k?"active":""}`} onClick={() => setTab(k)}>
+            {l} <span className="num">{k === "branches" ? branches.length : k === "vendors" ? vendors.length : agents.length}</span>
+          </div>
+        ))}
+      </div>
+
+      <Card>
+        <CardHead title={tab[0].toUpperCase() + tab.slice(1)} action={<button className="btn btn-sm"><i className="ti ti-plus"></i> Add</button>} />
+        <table className="tbl">
+          <thead><tr>
+            <th>Name</th>
+            {tab === "branches" && <><th>Code</th><th>Zone</th><th>Type</th><th>Manager</th></>}
+            {tab === "vendors"  && <><th>Specialty</th><th>Contract</th><th>Contact</th></>}
+            {tab === "agents"   && <><th>Role</th><th>Coverage</th></>}
+          </tr></thead>
+          <tbody>
+            {items.map(item => (
+              <tr key={item.id}>
+                <td style={{ fontWeight: 500 }}>{item.name}</td>
+                {tab === "branches" && <>
+                  <td><span className="code">{item.code}</span></td>
+                  <td className="muted">{item.zone}</td>
+                  <td className="muted">{item.type}</td>
+                  <td className="muted">{item.manager}</td>
+                </>}
+                {tab === "vendors" && <>
+                  <td className="muted">{item.specialty}</td>
+                  <td className="muted">{item.contractType}</td>
+                  <td className="mono muted" style={{ fontSize: 11 }}>{item.contact}</td>
+                </>}
+                {tab === "agents" && <>
+                  <td className="muted">{item.role}</td>
+                  <td className="muted">{item.zone}</td>
+                </>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+
+      <div style={{ marginTop: 22 }}>
+        <div className="section-eyebrow">Categories & types</div>
+        <h2 className="section-title">Ticket taxonomy</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+          {Object.entries(CATEGORIES).map(([cat, cfg]) => (
+            <Card key={cat}>
+              <div style={{ padding: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <i className={`ti ${cfg.icon}`} style={{ fontSize: 18, color: cfg.color }}></i>
+                  <strong style={{ fontSize: 13 }}>{cat}</strong>
+                </div>
+                <div style={{ fontSize: 11, color: "var(--muted)", lineHeight: 1.7 }}>
+                  {cfg.types.join(" · ")}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Expose
+Object.assign(window, {
+  OpsView, TicketsView, TicketDetail, NewTicket, BranchesView, BranchDetail, VendorsView, ReportsView, SettingsView,
+});
+
+</script>
+  <script type="text/babel" data-presets="react">
+// ── App root ───────────────────────────────────────────
+const { useState: useState_, useMemo: useMemo_ } = React;
+
+function App() {
+  const [tickets, setTickets] = useState_(TICKETS);
+  const [branches]            = useState_(BRANCHES);
+  const [vendors]             = useState_(VENDORS);
+  const [agents]              = useState_(AGENTS);
+
+  // Routing: { view, params }
+  const [route, setRoute] = useState_({ view: "ops" });
+
+  const goto = (view, params = {}) => setRoute({ view, ...params });
+
+  const openTicket = (t) => goto("ticket", { ticketId: t.id });
+  const openBranch = (id) => goto("branch", { branchId: id });
+  const newTicket  = ()   => goto("new-ticket");
+
+  const selectedTicket = useMemo_(() => tickets.find(t => t.id === route.ticketId), [tickets, route.ticketId]);
+  const selectedBranch = useMemo_(() => branches.find(b => b.id === route.branchId), [branches, route.branchId]);
+
+  const updateTicket = (t) => setTickets(prev => prev.map(x => x.id === t.id ? t : x));
+  const submitTicket = (form) => {
+    const code = `ANW-26-${String(149 + tickets.length - 30).padStart(4, "0")}`;
+    const t = {
+      id: Date.now(),
+      code,
+      title: form.title,
+      description: form.description,
+      branchId: Number(form.branchId),
+      category: form.category,
+      ticketType: form.ticketType,
+      priority: form.priority,
+      maintenanceType: form.maintenanceType,
+      agentId: form.agentId ? Number(form.agentId) : null,
+      vendorId: form.vendorId ? Number(form.vendorId) : null,
+      sparePartsCost: Number(form.sparePartsCost) || 0,
+      visitCost: Number(form.visitCost) || 0,
+      status: "New",
+      createdDate: "2026-05-15",
+      closedDate: "",
+      reporter: "You (Facilities)",
+    };
+    setTickets(prev => [t, ...prev]);
+    goto("ticket", { ticketId: t.id });
+  };
+
+  // — sidebar rail items ─────────────────────────────────
+  const openCount = tickets.filter(isOpen).length;
+  const needsDecision = tickets.filter(t => t.status === "New" || t.status === "Waiting Approval").length;
+
+  const railItems = [
+    { key: "ops",       icon: "ti-layout-dashboard", label: "Operations", pip: needsDecision > 0 },
+    { key: "tickets",   icon: "ti-ticket",           label: "Tickets",    pip: false },
+    { key: "branches",  icon: "ti-building-store",   label: "Branches",   pip: false },
+    { key: "vendors",   icon: "ti-tools",            label: "Vendors",    pip: false },
+    { key: "reports",   icon: "ti-chart-histogram",  label: "Reports",    pip: false },
+  ];
+
+  // — crumb title for top bar ─────────────────────────────
+  let crumbs;
+  if (route.view === "ops")        crumbs = <span><strong>Operations</strong></span>;
+  if (route.view === "tickets")    crumbs = <span><strong>Tickets</strong></span>;
+  if (route.view === "new-ticket") crumbs = <><span className="back" onClick={() => goto("tickets")}><i className="ti ti-arrow-left"></i> Tickets</span><span className="sep">/</span><strong>New ticket</strong></>;
+  if (route.view === "ticket")     crumbs = <><span className="back" onClick={() => goto("tickets")}><i className="ti ti-arrow-left"></i> Tickets</span><span className="sep">/</span><strong className="mono">{selectedTicket?.code}</strong></>;
+  if (route.view === "branches")   crumbs = <span><strong>Branches</strong></span>;
+  if (route.view === "branch")     crumbs = <><span className="back" onClick={() => goto("branches")}><i className="ti ti-arrow-left"></i> Branches</span><span className="sep">/</span><strong>{selectedBranch?.name}</strong></>;
+  if (route.view === "vendors")    crumbs = <span><strong>Vendors</strong></span>;
+  if (route.view === "reports")    crumbs = <span><strong>Reports</strong></span>;
+  if (route.view === "settings")   crumbs = <span><strong>Settings</strong></span>;
+
+  // active rail key
+  const railActive =
+    ["ops"].includes(route.view) ? "ops" :
+    ["tickets","new-ticket","ticket"].includes(route.view) ? "tickets" :
+    ["branches","branch"].includes(route.view) ? "branches" :
+    route.view;
+
+  return (
+    <div className="app">
+
+      {/* ── RAIL ── */}
+      <aside className="rail">
+        <div className="rail-logo" title="Amazon Now Egypt">a.</div>
+        {railItems.map(item => (
+          <div key={item.key}
+               className={`rail-item ${railActive === item.key ? "active" : ""}`}
+               title={item.label}
+               onClick={() => goto(item.key)}>
+            <i className={`ti ${item.icon}`}></i>
+            {item.pip && <span className="pip"></span>}
+          </div>
+        ))}
+        <div className="rail-spacer"></div>
+        <div className="rail-divider"></div>
+        <div className={`rail-item ${railActive === "settings" ? "active" : ""}`}
+             title="Settings"
+             onClick={() => goto("settings")}>
+          <i className="ti ti-settings"></i>
+        </div>
+        <div className="rail-item" title="Khalifa" style={{ background: "#FF9900", color: "#14130F", fontWeight: 700, fontSize: 13 }}>
+          MK
+        </div>
+      </aside>
+
+      {/* ── WORKSPACE ── */}
+      <div className="workspace">
+        <header className="topbar">
+          <div className="crumbs">{crumbs}</div>
+
+          <div className="ticker">
+            <div className="ticker-item"><span className="tdot" style={{ background: "var(--ok)" }}></span>{openCount} open tickets</div>
+            <div className="ticker-item"><span className="tdot" style={{ background: "var(--accent)" }}></span>{needsDecision} need your call</div>
+            <div className="ticker-item"><span className="tdot" style={{ background: "var(--info)" }}></span>{tickets.filter(t => t.status === "In Maintenance").length} vendors on-site</div>
+          </div>
+
+          <div className="search">
+            <i className="ti ti-search"></i>
+            <input placeholder="Search anything…" />
+            <span className="kbd">⌘K</span>
+          </div>
+
+          <button className="btn btn-accent" onClick={newTicket}>
+            <i className="ti ti-plus"></i> New ticket
+          </button>
+        </header>
+
+        <main className="canvas">
+          {route.view === "ops" && <OpsView
+            tickets={tickets} branches={branches} vendors={vendors} agents={agents}
+            onOpenTicket={openTicket} onOpenBranch={openBranch} onGotoView={goto} />}
+
+          {route.view === "tickets" && <TicketsView
+            tickets={tickets} branches={branches} vendors={vendors} agents={agents}
+            onOpenTicket={openTicket} onNewTicket={newTicket} />}
+
+          {route.view === "ticket" && selectedTicket && <TicketDetail
+            ticket={selectedTicket} branches={branches} vendors={vendors} agents={agents}
+            onUpdate={updateTicket} />}
+
+          {route.view === "new-ticket" && <NewTicket
+            branches={branches} vendors={vendors} agents={agents}
+            onSubmit={submitTicket} onCancel={() => goto("tickets")} />}
+
+          {route.view === "branches" && <BranchesView
+            branches={branches} tickets={tickets}
+            onOpenBranch={openBranch} />}
+
+          {route.view === "branch" && selectedBranch && <BranchDetail
+            branch={selectedBranch} branches={branches} tickets={tickets}
+            vendors={vendors} agents={agents}
+            onOpenTicket={openTicket} />}
+
+          {route.view === "vendors" && <VendorsView
+            vendors={vendors} tickets={tickets} branches={branches} />}
+
+          {route.view === "reports" && <ReportsView
+            tickets={tickets} branches={branches} vendors={vendors} agents={agents} />}
+
+          {route.view === "settings" && <SettingsView
+            branches={branches} vendors={vendors} agents={agents} />}
+        </main>
+      </div>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+</body>
+</html>
