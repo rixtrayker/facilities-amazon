@@ -1,0 +1,1422 @@
+{
+  "Tickets": [
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة برايز"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 3000,
+      "Visit": 900,
+      "Description": "إضافة برايز خارجي 12 علبة"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 2600,
+      "Visit": 650,
+      "Description": "إضافة برايز خارجي10 علبة"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 1840,
+      "Visit": 200,
+      "Description": "تركيب غطاء بواط لكل الفرع وايجار سلم"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Heaters",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 300,
+      "Description": "تركيب وتشغيل السخان"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "IT",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 800,
+      "Visit": 0,
+      "Description": "توريد ووتر بروف راك"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Alumital Doors",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 685,
+      "Visit": 0,
+      "Description": "توريد وتركيب كالون "
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Alumital Doors",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 970,
+      "Visit": 0,
+      "Description": "توريد وتركيب طقم مقبض وكالون"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Construction",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 39885,
+      "Visit": 0,
+      "Description": "تنفيذ باركينج"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Holes",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 525,
+      "Visit": 0,
+      "Description": "توريد وتركيب عتبة رخام"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Holes",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 1000,
+      "Visit": 0,
+      "Description": "ترميم ودهان"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 700,
+      "Description": "صيانة برايز"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 1400,
+      "Visit": 0,
+      "Description": "إضافة برايز خارجي"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 1220,
+      "Visit": 0,
+      "Description": "تركيب غطاء بواط لكل الفرع"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 150,
+      "Description": "تجميع وصيانة الشفاط وتقفيل الشباك"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Lighting",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 100,
+      "Description": "إعادة تثبيت كشافات"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 1025,
+      "Visit": 0,
+      "Description": "صيانة موتور الرفع"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Plumbing",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 420,
+      "Visit": 0,
+      "Description": "تغيير قلب خلاط ووصلة شجرة ومحبس وقنطرة"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "إعادة تثبيت وتسليك الصرف"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Alumital Doors",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 800,
+      "Visit": 0,
+      "Description": "توريد وتركيب مقابض وكالون"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Holes",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 1000,
+      "Visit": 0,
+      "Description": "ترميم ودهان"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Water dispenser",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "تغيير جوان الحلة الداخلية"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "صيانة وتثبيت بنز الباب"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 430,
+      "Description": "صيانة برايز"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 2600,
+      "Visit": 0,
+      "Description": "إضافة برايز خارجي"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 1740,
+      "Visit": 0,
+      "Description": "تركيب غطاء بواط لكل الفرع"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Lighting",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 100,
+      "Description": "إعادة تثبيت كشافات"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 600,
+      "Description": "صيانة برايز"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 4550,
+      "Visit": 0,
+      "Description": "إضافة 14 علبة برايز خارجي"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 1600,
+      "Visit": 0,
+      "Description": "تركيب غطاء بواط لكل الفرع"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sherif Gamil",
+      "Type": "UPS",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 52000,
+      "Visit": 0,
+      "Description": "توريد وتركيب UPS"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "إزالة الغطاء"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Alumital Doors",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 600,
+      "Visit": 0,
+      "Description": "تركيب مقبض وعصفورة"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Paint",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 1200,
+      "Visit": 0,
+      "Description": "دهان الباب وإخفاء اللحامات"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Holes",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 2050,
+      "Visit": 0,
+      "Description": "ترميم بفوم وتركيب زوي المونيوم"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 280,
+      "Visit": 250,
+      "Description": "تغيير 2 شطاف داخلي و2 كوع"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 370,
+      "Visit": 200,
+      "Description": "تغيير السديلي والمانيجا"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 485,
+      "Visit": 0,
+      "Description": "تركيب جوان لكوع الصرف وجلب"
+    },
+    {
+      "Monthe": 3,
+      "vendor": "DAR",
+      "Type": "Trolley",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 350,
+      "Visit": 0,
+      "Description": "تغيير العجل المكسور"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "DAR",
+      "Type": "Electricity",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 2600,
+      "Visit": 650,
+      "Description": "إضافة برايز خارجي 10 علبة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "DAR",
+      "Type": "Lighting",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 3600,
+      "Visit": 0,
+      "Description": "توريد وتركيب 6كشافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Air Curtains",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 11100,
+      "Visit": 0,
+      "Description": "توريد وتركيب عدد 3 ستارة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Ladder",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 1650,
+      "Visit": 0,
+      "Description": "صيانة عدد 8 سلم شامل مسامير ولحام و3 فوم للستاير"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "Cameras",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 2500,
+      "Visit": 10000,
+      "Description": "تعديل الفرع كله 49 كاميرا وإضافة 102 متر كات6"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 500,
+      "Description": "تركيب صدادات لعجل الراك وقص الفاصل بالصاروخ"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Cooling room",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 650,
+      "Description": "صيانة باب الشيلر وباب الحمام"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plastic curtains",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 3900,
+      "Visit": 0,
+      "Description": "توريد وتركيب ستارة بلاستيك للدليفري"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 1700,
+      "Visit": 0,
+      "Description": "توريد عدد 2 صندوق اسعافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 700,
+      "Description": "توريد وتركيب 3 كشاف طوارئ شامل النقل"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 300,
+      "Visit": 120,
+      "Description": "تركيب شاشة وتوريد حامل وتثبيت استندات وتركيب البصمة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Air Curtains",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 11700,
+      "Visit": 0,
+      "Description": "توريد وتركيب 3 ستارة شرائح"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 6820,
+      "Visit": 0,
+      "Description": "تغيير مسار الصرف وتزويد سخانات وتقفيل سليكون وتوصيل الصرف في المنور"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Ladder",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 800,
+      "Visit": 0,
+      "Description": "صيانة جميع السلالم"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 200,
+      "Visit": 0,
+      "Description": "نثبيت وتربيط جزئي للاستاندات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 1700,
+      "Visit": 0,
+      "Description": "توريد وتركيب 2 صندوق اسعافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 700,
+      "Description": "توريد وتركيب 3 كشاف طوارئ شامل النقل توصيل الكهراء"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "DAR",
+      "Type": "Lighting",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 3900,
+      "Visit": 0,
+      "Description": "توريد وتركيب 6كشافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Ladder",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 1150,
+      "Visit": 0,
+      "Description": "صيانة جميع سلالم الفرع عدد 7"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "DAR",
+      "Type": "Hand lift",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 4250,
+      "Visit": 0,
+      "Description": "صيانة الهاند باليت في السبتية شامل اانقل"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 850,
+      "Visit": 0,
+      "Description": "توريد صندوق اسعافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plastic curtains",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 11700,
+      "Visit": 0,
+      "Description": "توريد وتركيب 3 ستارة بلاستيك"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "تثبيت استاند الاستلام واعادة تربيطه وتأمينه"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "Cameras",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 500,
+      "Visit": 2500,
+      "Description": "تم تعديل زوايا ١٢ كاميرا وتوريد ١٢ متر كات 6"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 100,
+      "Description": "إزالة غطاء الفاير"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Alumital Doors",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 850,
+      "Visit": 0,
+      "Description": "توريد وتركيب طقم مقابض الوميتال وعصفورة حمام"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Holes",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 1850,
+      "Visit": 0,
+      "Description": "ترميم بمعجون وأسمنت وادبوند و5 عبوات فوم"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Water dispenser",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 4400,
+      "Visit": 0,
+      "Description": "توريد دسبنسر جديد"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 700,
+      "Description": "توريد وتركيب 3 كشاف طوارئ شامل النقل توصيل الكهراء"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Lighting",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 1450,
+      "Visit": 0,
+      "Description": "توريد وتركيب كشافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 450,
+      "Visit": 0,
+      "Description": "عمل 2 بريزة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Air Curtains",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 11100,
+      "Visit": 0,
+      "Description": "توريد وتركيب 3 ستارة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Holes",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 900,
+      "Visit": 0,
+      "Description": "إلغاء كتف جبس وترميم حائط وتغيير نص لوح جبس ومعجون ممتاز"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 3735,
+      "Visit": 0,
+      "Description": "تعديل مسار خط تغذية الحمام الخارجي"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "تغيير السديلي"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "تم صيانة السيفون"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 4685,
+      "Visit": 0,
+      "Description": "تعديل وتوسيع مسار الصرف وضبط الميول وعزله حراري بجاسكت وارموفلكس لتقليل التجمد"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "General",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 250,
+      "Description": "توسيع شلف منطقة التسليم"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Ladder",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 940,
+      "Visit": 0,
+      "Description": "صيانة جميع السلالم"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Installation - General",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 1800,
+      "Visit": 0,
+      "Description": "توريد وتركيب 2 صندوق اسعافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plastic curtains",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 3900,
+      "Visit": 0,
+      "Description": "توريد وتركيب ستارة بلاستيك للدليفري"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 700,
+      "Description": "توريد وتركيب 3 كشاف طوارئ شامل النقل توصيل الكهراء"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 2950,
+      "Visit": 0,
+      "Description": "تزويد 9 علب و 15 برايز"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 2625,
+      "Visit": 0,
+      "Description": "تركيب كشاف خارجي ضمان سنتين"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 60,
+      "Visit": 0,
+      "Description": "تقفيل لوحة الكهربا"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "General",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 1500,
+      "Description": "تركيب الصواعق والطفايات وصناديق الاسعاف"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "IT",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 2500,
+      "Description": "تركيب يونيفاي في التبريد ونقله مرة تانية وتعديل كاميرات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "Electricity",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 1500,
+      "Description": "تعديل خط كهربا الراوتر وربطه مع UPS"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sherif Gamil",
+      "Type": "UPS",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 52000,
+      "Visit": 0,
+      "Description": "توريد وتركيب UPS"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Holes",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 485,
+      "Visit": 0,
+      "Description": "ترميم جبس بورد"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Electricity",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 120,
+      "Description": "نقل الشاشة"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plumbing",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 170,
+      "Description": "توصيل صرف تكييف"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "General",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 8850,
+      "Visit": 0,
+      "Description": "توريد رامب حديد"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "General",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 900,
+      "Visit": 0,
+      "Description": "صندوق اسعافات"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Air Curtains",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 11100,
+      "Visit": 1000,
+      "Description": "توريد وتركيب 3 ستارة هوا شامل النقل"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Sharkawy",
+      "Type": "Plastic curtains",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 3900,
+      "Visit": 0,
+      "Description": "توريد وتركيب ستارة بلاستيك شرايح للدليفري"
+    },
+    {
+      "Monthe": 4,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCC8",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 700,
+      "Description": "توريد وتركيب 3 كشاف طوارئ شامل النقل توصيل الكهراء"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "AC",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 3000,
+      "Description": "صيانة عامة 10 تكييف داخلي وخارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Cooling room",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التبريد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Frozen room",
+      "Location": "QCA1",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التجميد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "General",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 350,
+      "Visit": 450,
+      "Description": "تركيب حامل حديد لمراية الرامب"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "AC",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 800,
+      "Visit": 2400,
+      "Description": "صيانة عامة 8 تكييف داخلي وخارجي وشحن فريون لجهاز واحد عطل EC"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Cooling room",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التبريد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Frozen room",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التجميد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Air Curtains",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 500,
+      "Description": "صيانة عامة لعدد 4 ستاير الهواء"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Water dispenser",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 3150,
+      "Visit": 600,
+      "Description": "صيانة دسبنسر تغيير كباس وفلتر وشحن"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "AC",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 2400,
+      "Description": "صيانة عامة 8 تكييف داخلي وخارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Cooling room",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التبريد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Frozen room",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 400,
+      "Description": "صيانة عامة لوحدات التجميد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Air Curtains",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 375,
+      "Description": "صيانة عامة لستاير الهواء"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Plumbing",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 360,
+      "Visit": 150,
+      "Description": "تغيير وصلة وقلب خلاط الحمام"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Water dispenser",
+      "Location": "QCA2",
+      "Ststue": "In Progress",
+      "Description": "صيانة دسبنسر تسريب من الحنفية والجوان"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "AC",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 3000,
+      "Description": "صيانة عامة 10 تكييف وتركيب فانة"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Cooling room",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "صيانة عامة لوحدات التبريد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Frozen room",
+      "Location": "QCA8",
+      "Ststue": "Closed",
+      "Parts": 0,
+      "Visit": 0,
+      "Description": "صيانة عامة لوحدات التجميد خارجي"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "DAR",
+      "Type": "Holes",
+      "Location": "QCA1",
+      "Ststue": "In Progress",
+      "Description": "شروخ وكسور في سيراميك الأرضيات"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA5",
+      "Ststue": "Closed",
+      "Parts": 5000,
+      "Description": "توريد وتركيب 5 كشافات طولرئ إضافية"
+    },
+    {
+      "Monthe": 5,
+      "vendor": "Individual",
+      "Type": "Lighting",
+      "Location": "QCA2",
+      "Ststue": "Closed",
+      "Parts": 5000,
+      "Description": "توريد وتركيب 5 كشافات طولرئ إضافية"
+    }
+  ],
+  "Costs": [],
+  "Maintenance": [
+    {
+      "__EMPTY_1": "Jan",
+      "__EMPTY_2": "Feb",
+      "__EMPTY_3": "March",
+      "__EMPTY_4": "April",
+      "__EMPTY_5": "May",
+      "__EMPTY_6": "June",
+      "__EMPTY_7": "July ",
+      "__EMPTY_8": "August",
+      "__EMPTY_9": "September",
+      "__EMPTY_10": "October",
+      "__EMPTY_11": "November ",
+      "__EMPTY_12": "December"
+    },
+    {
+      "__EMPTY": "Cooling",
+      "__EMPTY_3": "AC",
+      "__EMPTY_4": "AC",
+      "__EMPTY_5": "AC",
+      "__EMPTY_6": "AC",
+      "__EMPTY_7": "AC",
+      "__EMPTY_8": "AC",
+      "__EMPTY_9": "AC",
+      "__EMPTY_10": "AC",
+      "__EMPTY_11": "AC"
+    },
+    {
+      "__EMPTY_1": "Air Curtins",
+      "__EMPTY_2": "Air Curtins",
+      "__EMPTY_3": "Air Curtins",
+      "__EMPTY_4": "Air Curtins",
+      "__EMPTY_5": "Air Curtins",
+      "__EMPTY_6": "Air Curtins",
+      "__EMPTY_7": "Air Curtins",
+      "__EMPTY_8": "Air Curtins",
+      "__EMPTY_9": "Air Curtins",
+      "__EMPTY_10": "Air Curtins",
+      "__EMPTY_11": "Air Curtins",
+      "__EMPTY_12": "Air Curtins"
+    },
+    {
+      "__EMPTY_5": "Dispencer"
+    },
+    {
+      "__EMPTY": "Civil",
+      "__EMPTY_4": "Racks",
+      "__EMPTY_8": "Racks",
+      "__EMPTY_12": "Racks"
+    },
+    {
+      "__EMPTY": "MEP",
+      "__EMPTY_1": "Fire System",
+      "__EMPTY_7": "Fire Alarm"
+    },
+    {
+      "__EMPTY_1": "E devices&panels",
+      "__EMPTY_7": "E devices&panels"
+    },
+    {
+      "__EMPTY_1": "Submerged motor",
+      "__EMPTY_2": "Submerged motor",
+      "__EMPTY_3": "Submerged motor",
+      "__EMPTY_4": "Submerged motor",
+      "__EMPTY_5": "Submerged motor",
+      "__EMPTY_6": "Submerged motor",
+      "__EMPTY_7": "Submerged motor",
+      "__EMPTY_8": "Submerged motor",
+      "__EMPTY_9": "Submerged motor",
+      "__EMPTY_10": "Submerged motor",
+      "__EMPTY_11": "Submerged motor",
+      "__EMPTY_12": "Submerged motor"
+    }
+  ],
+  "Master": [
+    {
+      "Type": "Office",
+      "Name": "Head Office",
+      "Location": "New Cairo",
+      "STATUS": "New",
+      "Agent": "Khalifa",
+      "Ticket Type": "AC",
+      "Category": "Equipment",
+      "Maintenance Type": "Maintenance",
+      "Month": 1
+    },
+    {
+      "Type": "FP",
+      "Name": "QCA1",
+      "Location": "Banafseg",
+      "STATUS": "In progress",
+      "Ticket Type": "Air Curtains",
+      "Category": "Equipment",
+      "Maintenance Type": "Modification",
+      "Month": 2
+    },
+    {
+      "Type": "FP",
+      "Name": "QCA2",
+      "Location": "Heliopolis",
+      "STATUS": "Pending",
+      "Ticket Type": "Air Suction",
+      "Category": "Equipment",
+      "Maintenance Type": "Construction",
+      "Month": 4
+    },
+    {
+      "Type": "FP",
+      "Name": "QCA5",
+      "Location": "Tagamoa 5",
+      "STATUS": "Not Related",
+      "Ticket Type": "Plastic curtains",
+      "Category": "Equipment",
+      "Maintenance Type": "Removing",
+      "Month": 5
+    },
+    {
+      "Type": "FP",
+      "Name": "QCA8",
+      "Location": "Shorouq",
+      "STATUS": "Duplicate ticket",
+      "Ticket Type": "IT",
+      "Category": "Network",
+      "Maintenance Type": "supplying",
+      "Month": 6
+    },
+    {
+      "Type": "FP",
+      "Name": "QCC8",
+      "Location": "10 Of Ramadan",
+      "STATUS": "Third party",
+      "Ticket Type": "Cameras",
+      "Category": "Network",
+      "Maintenance Type": "Service",
+      "Month": 7
+    },
+    {
+      "STATUS": "Rejected",
+      "Ticket Type": "Electricity",
+      "Category": "Electricity",
+      "Month": 8
+    },
+    {
+      "STATUS": "Waiting for approval",
+      "Ticket Type": "Lighting",
+      "Category": "Electricity",
+      "Month": 9
+    },
+    {
+      "STATUS": "Closed",
+      "Ticket Type": "UPS",
+      "Category": "Electricity",
+      "Month": 10
+    },
+    {
+      "Ticket Type": "Plumbing",
+      "Category": "Civil",
+      "Month": 11
+    },
+    {
+      "Ticket Type": "Holes",
+      "Category": "Civil",
+      "Month": 12
+    },
+    {
+      "Ticket Type": "Paint",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Construction",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Floors",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Ceiling",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "General",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Alumital Doors",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Alumital Mechanism",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Cooling room",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Frozen room",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Water dispenser",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Pantry Tools",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Office Doors",
+      "Category": "Civil"
+    },
+    {
+      "Ticket Type": "Chairs",
+      "Category": "Furniture"
+    },
+    {
+      "Ticket Type": "Desks",
+      "Category": "Furniture"
+    },
+    {
+      "Ticket Type": "Tables",
+      "Category": "Furniture"
+    },
+    {
+      "Ticket Type": "Heaters",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Ladder",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Trolley",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Hand lift",
+      "Category": "Equipment"
+    },
+    {
+      "Ticket Type": "Installation - General",
+      "Category": "General"
+    },
+    {
+      "Ticket Type": "Cleaning Works",
+      "Category": "House keeping"
+    },
+    {
+      "Ticket Type": "Generator",
+      "Category": "Electricity"
+    }
+  ]
+}
